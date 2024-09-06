@@ -35,13 +35,6 @@
             letter-spacing: 2px;
         }
 
-        .banner p {
-            font-size: 18px;
-            font-weight: 400;
-            margin: 5px 0 0;
-            letter-spacing: 1px;
-        }
-
         .container {
             display: flex;
             justify-content: center;
@@ -109,6 +102,7 @@
             background-color: #76a563;
         }
 
+        /* Image Gallery */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr); /* Two columns to match form size */
@@ -118,7 +112,8 @@
 
         .image-gallery img {
             width: 100%;
-            height: auto;
+            height: 200px; /* Set fixed height */
+            object-fit: cover; /* Ensure aspect ratio is maintained */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
@@ -127,46 +122,56 @@
         .image-gallery img:hover {
             transform: scale(1.05); /* Slight zoom on hover */
         }
+
+        .thank-you-message {
+            display: none; /* Initially hidden */
+            font-size: 20px;
+            color: #114611;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Banner -->
     <div class="banner">
-        <h1>Igor's Organic Cat Grass</h1>
-        <!-- <p>Providing the healthiest grass for your feline friend</p> -->
+        <h1>Nori's Nibbles Organic Cat Grass</h1>
+        <!-- <h3>Order using the order form below!</h3> -->
     </div>
 
     <div class="container">
         <!-- Order Form -->
-        <div class="order-form">
+        <div class="order-form" id="orderForm">
             <h1>Order Organic Cat Grass</h1>
-            <form action="https://example.com/process_order" method="POST">
+            <form id="catGrassForm">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
-
+    
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required>
-
+    
                 <label for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" required>
-
+    
                 <label for="quantity">Quantity (Pots of Cat Grass)</label>
                 <input type="number" id="quantity" name="quantity" min="1" required>
-
+    
                 <label for="address">Shipping Address</label>
                 <textarea id="address" name="address" rows="4" required></textarea>
-
+    
                 <button type="submit">Place Order</button>
             </form>
+        </div>
+    
+        <!-- Thank You Message -->
+        <div class="thank-you-message" id="thankYouMessage">
+            <h2>Thank you for your order!</h2>
+            <p>Please enjoy a 5% coupon if you use your existing order info next time.</p>
         </div>
 
         <!-- Image Grid -->
         <div id="image-grid-container" class="image-gallery">
-            <!-- <img src="cat-grass-1.jpg" alt="Organic Cat Grass 1">
-            <img src="cat-grass-2.jpg" alt="Organic Cat Grass 2"> -->
-            <!-- <img src="cat-grass-3.jpg" alt="Organic Cat Grass 3">
-            <img src="cat-grass-4.jpg" alt="Organic Cat Grass 4"> -->
             <img src="cat-grass-5.jpg" alt="Organic Cat Grass 5">
             <img src="cat-grass-6.jpg" alt="Organic Cat Grass 6">
             <img src="cat-grass-7.jpg" alt="Organic Cat Grass 7">
@@ -175,6 +180,37 @@
             <img src="cat-grass-10.jpg" alt="Organic Cat Grass 10">
         </div>
     </div>
+
+    <script>
+        // JavaScript to handle form submission via AJAX
+        document.getElementById('catGrassForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the form data
+            const formData = new FormData(this);
+
+            // Send the form data using AJAX
+            fetch('https://script.google.com/macros/s/AKfycbzQSNVbUbsucI0vcV3umQNjNGvr5LC4FoF7Gn81IpZPkWbXNE2RPLvVicqHjXZJBufGTA/exec', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log(result); // Log the result to check
+                if (result.includes('Success')) {  // Use includes to match variations
+                    // Hide the form and show the thank you message
+                    document.getElementById('orderForm').style.display = 'none';
+                    document.getElementById('thankYouMessage').style.display = 'block';
+                } else {
+                    alert('There was an error submitting your order. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your order. Please try again.');
+            });
+        });
+    </script>
 
 </body>
 </html>
