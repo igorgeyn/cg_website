@@ -190,6 +190,9 @@
                 <label for="address">Shipping Address</label>
                 <textarea id="address" name="address" rows="4" required></textarea>
     
+                <!-- Hidden input to capture browser info -->
+                <input type="hidden" id="browserInfo" name="browserInfo">
+    
                 <button type="submit">Place Order</button>
             </form>
         </div>
@@ -212,6 +215,29 @@
     </div>
 
     <script>
+        // JavaScript to detect browser and OS info and add it to the form
+        function getBrowserInfo() {
+            let userAgent = navigator.userAgent;
+            let browserName = "Unknown";
+
+            if (userAgent.indexOf("Chrome") > -1) {
+                browserName = "Chrome";
+            } else if (userAgent.indexOf("Safari") > -1) {
+                browserName = "Safari";
+            } else if (userAgent.indexOf("Firefox") > -1) {
+                browserName = "Firefox";
+            } else if (userAgent.indexOf("MSIE") > -1 || !!document.documentMode === true) {
+                browserName = "IE";
+            }
+
+            return browserName + " on " + navigator.platform;
+        }
+
+        // Add browser info to hidden input before form submission
+        document.getElementById('catGrassForm').addEventListener('submit', function(event) {
+            document.getElementById('browserInfo').value = getBrowserInfo();
+        });
+
         // JavaScript to handle form submission via AJAX
         document.getElementById('catGrassForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting the traditional way
@@ -220,7 +246,7 @@
             const formData = new FormData(this);
 
             // Send the form data using AJAX
-            fetch('https://script.google.com/macros/s/AKfycbzQSNVbUbsucI0vcV3umQNjNGvr5LC4FoF7Gn81IpZPkWbXNE2RPLvVicqHjXZJBufGTA/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbxTgEubIVx8ZIAIylqrARnRr12lMU59OZG03mhEp4RnUQssKGvqz072z8NfEqctFanx8Q/exec', {
                 method: 'POST',  // Ensure this is a POST request
                 body: formData,
             })
