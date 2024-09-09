@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             background-color: #114611; /* Forest green background */
             color: #f4f4f4;
             flex-direction: column;
@@ -130,37 +130,6 @@
             text-align: center;
             margin-top: 20px;
         }
-
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .banner h1 {
-                font-size: 28px;
-            }
-
-            .container {
-                flex-direction: column; /* Stack form and images vertically */
-                gap: 30px;
-                padding: 15px;
-            }
-
-            .order-form,
-            .image-gallery {
-                width: 100%; /* Take up full width */
-            }
-
-            .image-gallery {
-                grid-template-columns: 1fr; /* Only one image per row on mobile */
-            }
-
-            .order-form button {
-                font-size: 16px;
-            }
-
-            .order-form input,
-            .order-form textarea {
-                font-size: 14px; /* Slightly smaller input size on mobile */
-            }
-        }
     </style>
 </head>
 <body>
@@ -168,13 +137,14 @@
     <!-- Banner -->
     <div class="banner">
         <h1>Nori's Nibbles Organic Cat Grass</h1>
+        <!-- <h3>Order using the order form below!</h3> -->
     </div>
 
     <div class="container">
         <!-- Order Form -->
         <div class="order-form" id="orderForm">
             <h1>Order Organic Cat Grass</h1>
-            <form id="catGrassForm" method="POST">
+            <form id="catGrassForm">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
     
@@ -220,8 +190,8 @@
             const formData = new FormData(this);
 
             // Send the form data using AJAX
-            fetch('https://script.google.com/macros/s/AKfycbzQSNVbUbsucI0vcV3umQNjNGvr5LC4FoF7Gn81IpZPkWbXNE2RPLvVicqHjXZJBufGTA/exec', {
-                method: 'POST',  // Ensure this is a POST request
+            fetch('https://script.google.com/macros/s/AKfycbyC61sqVfa1IQiMNxyBKTkaG3wLkpKX9yWUnAPd5laDP5qmd4uxpOB34IHrnAiyr1wIbQ/exec', {
+                method: 'POST',
                 body: formData,
             })
             .then(response => response.text())
