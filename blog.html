@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nori's Nibbles Blog</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>body { font-family:'Montserrat',sans-serif; }</style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-green-800 py-4">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">Nori's Nibbles Blog</h1>
+      <a href="one-page-template.html" class="text-green-200 hover:text-white">← Back to Home</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-6 py-12">
+    <div id="post-list" class="space-y-8">
+      <!-- JS will inject list of posts here -->
+    </div>
+    <article id="post-content" class="prose max-w-none mx-auto" style="display:none;">
+      <!-- JS will render single post here -->
+    </article>
+  </main>
+
+  <script>
+    // Utility to get ?post=filename.md
+    function getQueryParam(name) {
+      const params = new URLSearchParams(location.search);
+      return params.get(name);
+    }
+
+    async function loadIndex() {
+      const res = await fetch('blog/index.json');
+      return res.ok ? res.json() : [];
+    }
+
+    async function loadMarkdown(path) {
+      const res = await fetch(path);
+      return res.ok ? res.text() : 'Error loading post.';
+    }
+
+    (async () => {
+      const postParam = getQueryParam('post');
+      if (postParam) {
+        // Show single post
+        const md = await loadMarkdown(`blog/${postParam}`);
+        document.getElementById('post-list').style.display = 'none';
+        const postArea = document.getElementById('post-content');
+        postArea.innerHTML = marked(md);
+        postArea.style.display = 'block';
+      } else {
+        // Show list of posts
+        const index = await loadIndex();
+        const list = document.getElementById('post-list');
+        index.forEach(({ filename, title, date }) => {
+          const item = document.createElement('div');
+          item.className = 'border-b pb-4';
+          item.innerHTML = `
+            <a href="?post=${filename}" class="text-xl font-semibold text-green-700 hover:underline">
+              ${title}
+            </a>
+            <p class="text-gray-500 text-sm">${date}</p>
+          `;
+          list.appendChild(item);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
