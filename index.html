@@ -4,30 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nori's Nibbles — Simple One-Page</title>
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; }
   </style>
 </head>
 <body class="bg-white text-gray-800 leading-relaxed">
 
   <!-- Header -->
-  <header class="bg-green-800 py-4">
+  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
     <div class="container mx-auto px-6 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-white">Nori’s Nibbles</h1>
       <nav>
-        <ul class="flex space-x-6">
-          <li><a href="#hero" class="hover:text-green-200 font-semibold">Home</a></li>
-          <li><a href="#about" class="hover:text-green-200 font-semibold">About</a></li>
-          <li><a href="#features" class="hover:text-green-200 font-semibold">Benefits</a></li>
-          <li><a href="#gallery" class="hover:text-green-200 font-semibold">Gallery</a></li>
-          <li><a href="#order" class="hover:text-green-200 font-semibold">Order</a></li>
-          <li><a href="blog.html" class="hover:text-green-200 font-semibold">Blog</a></li>
+        <ul class="flex space-x-4 text-sm font-medium">
+          <li><a href="#hero" class="text-white hover:text-green-200 transition-colors">Home</a></li>
+          <li><a href="#about" class="text-white hover:text-green-200 transition-colors">About</a></li>
+          <li><a href="#features" class="text-white hover:text-green-200 transition-colors">Benefits</a></li>
+          <li><a href="#gallery" class="text-white hover:text-green-200 transition-colors">Gallery</a></li>
+          <li><a href="#order" class="text-white hover:text-green-200 transition-colors">Order</a></li>
+          <li><a href="blog.html" class="text-white hover:text-green-200 transition-colors">Blog</a></li>
         </ul>
       </nav>
     </div>
@@ -77,8 +78,7 @@
     <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h2 class="text-3xl font-semibold mb-4">Our Story</h2>
-        <p class="mb-4">Hi, I’m Igor — a lifelong cat lover and small‐batch grower. I started Nori’s Nibbles to bring fresh, safe,
-          pesticide-free grass to feline friends everywhere.</p>
+        <p class="mb-4">Hi, I’m Igor — a lifelong cat lover and small-batch grower. I started Nori’s Nibbles to bring fresh, safe, pesticide-free grass to feline friends everywhere.</p>
         <h2 class="text-3xl font-semibold mb-4">Mission & Values</h2>
         <ul class="list-disc list-inside space-y-2 text-gray-700">
           <li>100% pesticide-free, small-batch farming</li>
@@ -87,8 +87,7 @@
         </ul>
       </div>
       <div>
-        <img src="images/cat-grass-11.jpg" alt="Grower tending grass"
-             class="rounded-lg shadow-lg object-cover w-full h-64">
+        <img src="images/cat-grass-11.jpg" alt="Grower tending grass" class="rounded-lg shadow-lg object-cover w-full h-64">
       </div>
     </div>
   </section>
