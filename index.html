@@ -10,36 +10,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <style>body { font-family: 'Montserrat', sans-serif; }</style>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+  </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 leading-relaxed">
+
   <!-- Hero -->
-  <section class="relative h-screen bg-cover bg-center" style="background-image: url('path-to-your-hero.jpg')">
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <section id="hero" class="relative h-screen bg-cover bg-center" style="background-image: url('images/cat-grass-1.jpg')">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
       <h1 class="text-4xl md:text-6xl font-bold text-white">Organic Cat Grass</h1>
-      <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-xl">Fresh, pesticide-free wheatgrass for happy, healthy kitties.</p>
-      <a href="#order" class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">Order Now</a>
+      <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+        Fresh, pesticide-free wheatgrass for happy, healthy kitties.
+      </p>
+      <a href="#order"
+         class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">
+        Order Now
+      </a>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="py-16 px-4 text-center">
+  <section id="features" class="py-16 px-4 text-center">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8">Why Cats Love Nori's Nibbles</h2>
+      <h2 class="text-3xl font-semibold mb-8">Why Cats Love Nori’s Nibbles</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div>
-          <img src="path-to-icon1.svg" alt="Digestive Health" class="mx-auto h-16 mb-4">
+          <img src="images/icon-digestive.svg" alt="Digestive Health" class="mx-auto h-16 mb-4">
           <h3 class="font-semibold mb-2">Digestive Health</h3>
           <p>Helps clear hairballs naturally.</p>
         </div>
         <div>
-          <img src="path-to-icon2.svg" alt="Nutrient Rich" class="mx-auto h-16 mb-4">
+          <img src="images/icon-nutrient.svg" alt="Nutrient Rich" class="mx-auto h-16 mb-4">
           <h3 class="font-semibold mb-2">Nutrient Rich</h3>
           <p>Packed with vitamins and minerals.</p>
         </div>
         <div>
-          <img src="path-to-icon3.svg" alt="Organic" class="mx-auto h-16 mb-4">
+          <img src="images/icon-organic.svg" alt="Organic" class="mx-auto h-16 mb-4">
           <h3 class="font-semibold mb-2">100% Organic</h3>
           <p>No pesticides or chemicals.</p>
         </div>
@@ -47,33 +55,144 @@
     </div>
   </section>
 
+  <!-- About & Mission -->
+  <section id="about" class="py-16 px-4 bg-gray-50">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-semibold mb-4">Our Story</h2>
+        <p class="mb-4">Hi, I’m Igor — a lifelong cat lover and small‐batch grower. I started Nori’s Nibbles to bring fresh, safe, pesticide-free grass to feline friends everywhere.</p>
+        <h2 class="text-3xl font-semibold mb-4">Mission & Values</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>100% pesticide-free, small-batch farming</li>
+          <li>Eco-friendly packaging & local delivery</li>
+          <li>Commitment to happy, healthy cats</li>
+        </ul>
+      </div>
+      <div>
+        <img src="images/cat-grass-11.jpg" alt="Grower tending grass" class="rounded-lg shadow-lg object-cover w-full h-64">
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-16 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8">How It Works</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="text-4xl mb-2">🌱</div>
+          <h4 class="font-medium mb-1">We Grow</h4>
+          <p class="text-gray-600">Organically, in small pots.</p>
+        </div>
+        <div>
+          <div class="text-4xl mb-2">✂️</div>
+          <h4 class="font-medium mb-1">We Harvest</h4>
+          <p class="text-gray-600">At peak freshness.</p>
+        </div>
+        <div>
+          <div class="text-4xl mb-2">📦</div>
+          <h4 class="font-medium mb-1">We Pack</h4>
+          <p class="text-gray-600">In compostable pots.</p>
+        </div>
+        <div>
+          <div class="text-4xl mb-2">🚚</div>
+          <h4 class="font-medium mb-1">We Ship</h4>
+          <p class="text-gray-600">Direct to your door in 1–2 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Gallery -->
-  <section class="py-16 bg-gray-50 px-4">
+  <section id="gallery" class="py-16 px-4">
     <div class="max-w-4xl mx-auto text-center mb-8">
       <h2 class="text-3xl font-semibold">Gallery</h2>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
-      <!-- replace with your own images -->
-      <img src="gallery1.jpg" alt="Cat with grass" class="rounded-lg">
-      <img src="gallery2.jpg" alt="Cat nibbling" class="rounded-lg">
-      <img src="gallery3.jpg" alt="Fresh pots" class="rounded-lg">
-      <img src="gallery4.jpg" alt="Kitty happy" class="rounded-lg">
+      <img src="images/cat-grass-2.jpg" alt="Cat with grass" class="rounded-lg shadow-md">
+      <img src="images/cat-grass-3.jpg" alt="Cat nibbling" class="rounded-lg shadow-md">
+      <img src="images/cat-grass-4.jpg" alt="Fresh pots" class="rounded-lg shadow-md">
+      <img src="images/cat-grass-5.jpg" alt="Kitty happy" class="rounded-lg shadow-md">
     </div>
   </section>
 
-  <!-- Order -->
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 px-4 bg-gray-50">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-8">What Customers Say</h2>
+      <div class="space-y-8">
+        <blockquote class="italic text-gray-700">“My kitty went nuts for this grass—no more hairballs!”</blockquote>
+        <p class="font-semibold">— @whiskersandme</p>
+        <blockquote class="italic text-gray-700">“Freshest grass I’ve ever seen delivered.”</blockquote>
+        <p class="font-semibold">— Luna & Milo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="border rounded-lg p-4">
+          <summary class="font-medium cursor-pointer">How often should I replace the grass?</summary>
+          <p class="mt-2 text-gray-600">We recommend replacing every 7–10 days for peak freshness.</p>
+        </details>
+        <details class="border rounded-lg p-4">
+          <summary class="font-medium cursor-pointer">Do you ship nationwide?</summary>
+          <p class="mt-2 text-gray-600">Yes! We ship to all 50 states with fast, insulated packaging.</p>
+        </details>
+        <details class="border rounded-lg p-4">
+          <summary class="font-medium cursor-pointer">What if my order arrives damaged?</summary>
+          <p class="mt-2 text-gray-600">Just email us within 24 hrs and we’ll send a replacement.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order CTA -->
   <section id="order" class="py-16 px-4">
     <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
       <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
-      <a href="mailto:orders@norisnibbles.com?subject=Cat Grass Order" class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">Email Your Order</a>
+      <a href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order"
+         class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">
+        Email Your Order
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="py-16 px-4 bg-gray-50">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-4">Get 10% Off Your First Order</h2>
+      <p class="mb-6 text-gray-700">Join our newsletter for tips, specials, and more.</p>
+      <form action="#" method="POST" class="flex flex-col sm:flex-row gap-4 justify-center">
+        <input type="email" name="email" required placeholder="Your email"
+               class="w-full sm:w-auto flex-grow border border-green-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        <button type="submit"
+                class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-6 rounded transition">
+          Subscribe
+        </button>
+      </form>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-600 text-sm">
-    <p>&copy; 2025 Nori's Nibbles</p>
-    <p><a href="#" class="underline">Instagram</a> | <a href="#" class="underline">Facebook</a></p>
+    <div class="space-y-2">
+      <p>&copy; 2025 Nori’s Nibbles</p>
+      <nav class="space-x-4">
+        <a href="#hero" class="underline hover:text-green-700">Home</a>
+        <a href="#about" class="underline hover:text-green-700">About</a>
+        <a href="#faq" class="underline hover:text-green-700">FAQ</a>
+      </nav>
+      <p>
+        <a href="#" class="underline hover:text-green-700">Instagram</a> |
+        <a href="#" class="underline hover:text-green-700">Facebook</a>
+      </p>
+    </div>
   </footer>
+
 </body>
 </html>
