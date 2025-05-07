@@ -1,272 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Organic Cat Grass</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #114611; /* Forest green background */
-            color: #f4f4f4;
-            flex-direction: column;
-        }
-
-        /* Banner Styling */
-        .banner {
-            width: 100%;
-            background-color: #114611; /* Solid forest green background */
-            padding: 40px 0 20px; /* More padding at the top for extra green space */
-            text-align: center;
-            color: white;
-            font-family: 'Arial', sans-serif;
-            font-weight: 700;
-        }
-
-        .banner h1 {
-            font-size: 36px;
-            margin: 0;
-            letter-spacing: 2px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align items to the top */
-            gap: 50px; /* Roughly 1-inch gap between form and gallery */
-            padding: 20px;
-            max-width: 1200px; /* Ensures content doesn’t stretch too wide */
-            margin-top: 20px; /* Add space below the banner */
-        }
-
-        .order-form {
-            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            width: 400px; /* Fixed width to match image grid size */
-            box-sizing: border-box;
-            color: #333;
-        }
-
-        .order-form h1 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #114611; /* Matches background color */
-            font-weight: bold;
-        }
-
-        .order-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: #114611;
-            font-weight: 600;
-        }
-
-        .order-form input[type="text"],
-        .order-form input[type="email"],
-        .order-form input[type="number"],
-        .order-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #8bbf72;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        .order-form button {
-            width: 100%;
-            padding: 12px;
-            background-color: #8bbf72;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .order-form button:hover {
-            background-color: #76a563;
-        }
-
-        /* Image Gallery */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns to match form size */
-            gap: 15px;
-            width: 400px; /* Same width as the form */
-        }
-
-        .image-gallery img {
-            width: 100%;
-            height: 200px; /* Set fixed height */
-            object-fit: cover; /* Ensure aspect ratio is maintained */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .image-gallery img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
-        }
-
-        .thank-you-message {
-            display: none; /* Initially hidden */
-            font-size: 20px;
-            color: #114611;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .banner h1 {
-                font-size: 28px;
-            }
-
-            .container {
-                flex-direction: column; /* Stack form and images vertically */
-                gap: 30px;
-                padding: 15px;
-            }
-
-            .order-form,
-            .image-gallery {
-                width: 100%; /* Take up full width */
-            }
-
-            .image-gallery {
-                grid-template-columns: 1fr; /* Only one image per row on mobile */
-            }
-
-            .order-form button {
-                font-size: 16px;
-            }
-
-            .order-form input,
-            .order-form textarea {
-                font-size: 14px; /* Slightly smaller input size on mobile */
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nori's Nibbles — Simple One-Page</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <style>body { font-family: 'Montserrat', sans-serif; }</style>
 </head>
-<body>
-
-    <!-- Banner -->
-    <div class="banner">
-        <h1>Nori's Nibbles Organic Cat Grass</h1>
+<body class="bg-white text-gray-800">
+  <!-- Hero -->
+  <section class="relative h-screen bg-cover bg-center" style="background-image: url('path-to-your-hero.jpg')">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white">Organic Cat Grass</h1>
+      <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-xl">Fresh, pesticide-free wheatgrass for happy, healthy kitties.</p>
+      <a href="#order" class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">Order Now</a>
     </div>
+  </section>
 
-    <div class="container">
-        <!-- Order Form -->
-        <div class="order-form" id="orderForm">
-            <h1>Order Organic Cat Grass</h1>
-            <form id="catGrassForm" method="POST">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-    
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-    
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" required>
-    
-                <label for="quantity">Quantity (Pots of Cat Grass)</label>
-                <input type="number" id="quantity" name="quantity" min="1" required>
-    
-                <label for="address">Shipping Address</label>
-                <textarea id="address" name="address" rows="4" required></textarea>
-    
-                <!-- Hidden input to capture browser info -->
-                <input type="hidden" id="browserInfo" name="browserInfo">
-    
-                <button type="submit">Place Order</button>
-            </form>
+  <!-- Features -->
+  <section class="py-16 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8">Why Cats Love Nori's Nibbles</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
+          <img src="path-to-icon1.svg" alt="Digestive Health" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold mb-2">Digestive Health</h3>
+          <p>Helps clear hairballs naturally.</p>
         </div>
-    
-        <!-- Thank You Message -->
-        <div class="thank-you-message" id="thankYouMessage">
-            <h2>Thank you for your order!</h2>
-            <p>Please enjoy a 5% coupon if you use your existing order info next time.</p>
+        <div>
+          <img src="path-to-icon2.svg" alt="Nutrient Rich" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold mb-2">Nutrient Rich</h3>
+          <p>Packed with vitamins and minerals.</p>
         </div>
-
-        <!-- Image Grid -->
-        <div id="image-grid-container" class="image-gallery">
-            <img src="cat-grass-5.jpg" alt="Organic Cat Grass 5">
-            <img src="cat-grass-6.jpg" alt="Organic Cat Grass 6">
-            <img src="cat-grass-7.jpg" alt="Organic Cat Grass 7">
-            <img src="cat-grass-8.jpg" alt="Organic Cat Grass 8">
-            <img src="cat-grass-9.jpg" alt="Organic Cat Grass 9">
-            <img src="cat-grass-10.jpg" alt="Organic Cat Grass 10">
+        <div>
+          <img src="path-to-icon3.svg" alt="Organic" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold mb-2">100% Organic</h3>
+          <p>No pesticides or chemicals.</p>
         </div>
+      </div>
     </div>
+  </section>
 
-    <script>
-        // JavaScript to detect browser and OS info and add it to the form
-        function getBrowserInfo() {
-            let userAgent = navigator.userAgent;
-            let browserName = "Unknown";
+  <!-- Gallery -->
+  <section class="py-16 bg-gray-50 px-4">
+    <div class="max-w-4xl mx-auto text-center mb-8">
+      <h2 class="text-3xl font-semibold">Gallery</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+      <!-- replace with your own images -->
+      <img src="gallery1.jpg" alt="Cat with grass" class="rounded-lg">
+      <img src="gallery2.jpg" alt="Cat nibbling" class="rounded-lg">
+      <img src="gallery3.jpg" alt="Fresh pots" class="rounded-lg">
+      <img src="gallery4.jpg" alt="Kitty happy" class="rounded-lg">
+    </div>
+  </section>
 
-            if (userAgent.indexOf("Chrome") > -1) {
-                browserName = "Chrome";
-            } else if (userAgent.indexOf("Safari") > -1) {
-                browserName = "Safari";
-            } else if (userAgent.indexOf("Firefox") > -1) {
-                browserName = "Firefox";
-            } else if (userAgent.indexOf("MSIE") > -1 || !!document.documentMode === true) {
-                browserName = "IE";
-            }
+  <!-- Order -->
+  <section id="order" class="py-16 px-4">
+    <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
+      <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
+      <a href="mailto:orders@norisnibbles.com?subject=Cat Grass Order" class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">Email Your Order</a>
+    </div>
+  </section>
 
-            return browserName + " on " + navigator.platform;
-        }
-
-        // Add browser info to hidden input before form submission
-        document.getElementById('catGrassForm').addEventListener('submit', function(event) {
-            document.getElementById('browserInfo').value = getBrowserInfo();
-        });
-
-        // JavaScript to handle form submission via AJAX
-        document.getElementById('catGrassForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
-
-            // Get the form data
-            const formData = new FormData(this);
-
-            // Send the form data using AJAX
-            fetch('https://script.google.com/macros/s/AKfycbz3bQbL9MqlHtaYw3KKp_nD85aSVRzFR-0Fci6jinZofvc7D-2-CgAuVcTsVTzYcdeDsw/exec', {
-                method: 'POST',  // Ensure this is a POST request
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(result => {
-                console.log(result); // Log the result to check
-                if (result.includes('Success')) {  // Use includes to match variations
-                    // Hide the form and show the thank you message
-                    document.getElementById('orderForm').style.display = 'none';
-                    document.getElementById('thankYouMessage').style.display = 'block';
-                } else {
-                    alert('There was an error submitting your order. Please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your order. Please try again.');
-            });
-        });
-    </script>
-
+  <!-- Footer -->
+  <footer class="py-8 text-center text-gray-600 text-sm">
+    <p>&copy; 2025 Nori's Nibbles</p>
+    <p><a href="#" class="underline">Instagram</a> | <a href="#" class="underline">Facebook</a></p>
+  </footer>
 </body>
 </html>

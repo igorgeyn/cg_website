@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Image Grid Styles */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .image-gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .image-gallery img:hover {
-            transform: scale(1.05); /* Slight zoom on hover */
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nori's Nibbles Gallery</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>body { font-family: 'Montserrat', sans-serif; }</style>
 </head>
-<body>
-    <div class="image-gallery">
-        <img src="cat-grass-1.jpg" alt="Organic Cat Grass 1">
-        <img src="cat-grass-2.jpg" alt="Organic Cat Grass 2">
-        <img src="cat-grass-3.jpg" alt="Organic Cat Grass 3">
-        <img src="cat-grass-4.jpg" alt="Organic Cat Grass 4">
+<body class="bg-white">
+  <div class="max-w-5xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-semibold text-center text-green-900 mb-8">Our Cats in Action</h2>
+    <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+      <!-- Replace these src values with your own image paths -->
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="cat-grass-5.jpg" alt="Cat nibbling grass"
+             class="w-full h-48 object-cover transform hover:scale-105 transition"/>
+      </div>
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="cat-grass-6.jpg" alt="Fresh pots"
+             class="w-full h-48 object-cover transform hover:scale-105 transition"/>
+      </div>
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="cat-grass-7.jpg" alt="Kitty happy"
+             class="w-full h-48 object-cover transform hover:scale-105 transition"/>
+      </div>
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <img src="cat-grass-8.jpg" alt="Green wheatgrass"
+             class="w-full h-48 object-cover transform hover:scale-105 transition"/>
+      </div>
+      <!-- add more as needed -->
     </div>
+  </div>
 </body>
 </html>
