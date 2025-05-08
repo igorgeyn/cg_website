@@ -45,6 +45,11 @@
   </main>
 
   <script>
+    // pick the correct marked function
+    const renderMarkdown = (typeof marked === 'function')
+      ? marked
+      : (typeof marked.parse === 'function' ? marked.parse : null);
+
     function getQueryParam(name) {
       return new URLSearchParams(window.location.search).get(name);
     }
@@ -70,9 +75,10 @@
         // Single-post flow
         try {
           const md = await loadMarkdown(post);
-          listEl.style.display    = 'none';
-          contentEl.innerHTML      = marked(md);
-          contentEl.style.display  = 'block';
+          listEl.style.display   = 'none';
+          if (!renderMarkdown) throw new Error('No Markdown renderer found');
+          contentEl.innerHTML     = renderMarkdown(md);
+          contentEl.style.display = 'block';
         } catch (err) {
           console.error('Error loading post:', err);
           listEl.style.display = 'block';
