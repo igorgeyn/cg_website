@@ -1,5 +1,5 @@
 [
-    { "filename": "first-post.md", "title": "Welcome to Nori’s Nibbles", "date": "2025-05-01" },
-    // { "filename": "launch-announcement.md", "title": "Launch Day Is Here!", "date": "2025-05-07" }
+    { "filename": "first-post.md",        "title": "Welcome to Nori’s Nibbles",       "date": "2025-05-01" },
+    { "filename": "launch-announcement.md","title": "Launch Day Is Here!",             "date": "2025-05-07" }
   ]
   
