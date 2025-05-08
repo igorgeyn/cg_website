@@ -38,52 +38,73 @@
 
   <!-- Main -->
   <main class="pt-20 container mx-auto px-6 py-12">
-    <div id="post-list" class="space-y-8">
-      <!-- JS will inject list of posts here -->
+    <div id="post-list" class="space-y-8 text-center text-gray-600">
+      Loading posts…
     </div>
-    <article id="post-content" class="prose max-w-none mx-auto" style="display:none;">
-      <!-- JS will render single post here -->
-    </article>
+    <article id="post-content" class="prose max-w-none mx-auto" style="display:none;"></article>
   </main>
 
   <script>
+    // Helper to read ?post=filename.md
     function getQueryParam(name) {
-      const params = new URLSearchParams(location.search);
-      return params.get(name);
+      return new URLSearchParams(window.location.search).get(name);
     }
 
+    // Debug version: fetch raw text and log before parsing
     async function loadIndex() {
-      const res = await fetch('blog/index.json');
-      return res.ok ? res.json() : [];
+      const url = 'blog/index.json';
+      console.log('🔍 Fetching index.json from:', url);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`index.json load failed: ${res.status}`);
+      const raw = await res.text();
+      console.log('🔍 raw index.json response:', raw);
+      return JSON.parse(raw);
     }
 
-    async function loadMarkdown(path) {
-      const res = await fetch(path);
-      return res.ok ? res.text() : 'Error loading post.';
+    async function loadMarkdown(filename) {
+      const url = `blog/${filename}`;
+      console.log('🔍 Fetching markdown from:', url);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${filename}: ${res.status}`);
+      return res.text();
     }
 
     (async () => {
-      const postParam = getQueryParam('post');
-      if (postParam) {
-        const md = await loadMarkdown(`blog/${postParam}`);
-        document.getElementById('post-list').style.display = 'none';
-        const postArea = document.getElementById('post-content');
-        postArea.innerHTML = marked(md);
-        postArea.style.display = 'block';
-      } else {
+      const listEl = document.getElementById('post-list');
+      const contentEl = document.getElementById('post-content');
+      const post = getQueryParam('post');
+
+      try {
         const index = await loadIndex();
-        const list = document.getElementById('post-list');
-        index.forEach(({ filename, title, date }) => {
-          const item = document.createElement('div');
-          item.className = 'border-b pb-4';
-          item.innerHTML = `
-            <a href="?post=${filename}" class="text-xl font-semibold text-green-700 hover:underline">
-              ${title}
-            </a>
-            <p class="text-gray-500 text-sm">${date}</p>
-          `;
-          list.appendChild(item);
-        });
+
+        if (post) {
+          // Render single post
+          listEl.style.display = 'none';
+          contentEl.style.display = 'block';
+          const md = await loadMarkdown(post);
+          contentEl.innerHTML = marked(md);
+        } else {
+          // Render list of posts
+          listEl.innerHTML = '';
+          if (!index.length) {
+            listEl.innerHTML = '<p>No blog posts found.</p>';
+            return;
+          }
+          index.forEach(({ filename, title, date }) => {
+            const div = document.createElement('div');
+            div.className = 'border-b pb-4';
+            div.innerHTML = `
+              <a href="?post=${filename}" class="text-xl font-semibold text-green-700 hover:underline">
+                ${title}
+              </a>
+              <p class="text-gray-500 text-sm">${date}</p>
+            `;
+            listEl.appendChild(div);
+          });
+        }
+      } catch (err) {
+        console.error('Error in blog loader:', err);
+        listEl.innerHTML = '<p class="text-red-600">Error loading blog. Check console for details.</p>';
       }
     })();
   </script>
