@@ -45,72 +45,63 @@
   </main>
 
   <script>
-    // Helper to read ?post=filename.md
     function getQueryParam(name) {
       return new URLSearchParams(window.location.search).get(name);
     }
 
-    // Debug version: fetch raw text and log before parsing
     async function loadIndex() {
-      const url = 'blog/index.json';
-      console.log('🔍 Fetching index.json from:', url);
-      const res = await fetch(url);
+      const res = await fetch('blog/index.json');
       if (!res.ok) throw new Error(`index.json load failed: ${res.status}`);
-      const raw = await res.text();
-      console.log('🔍 raw index.json response:', raw);
-      return JSON.parse(raw);
+      return res.json();
     }
 
-    // Debug version: log the markdown text on load
     async function loadMarkdown(filename) {
-      const url = `blog/${filename}`;
-      console.log('🔍 Attempting to fetch post at:', url);
-      const res = await fetch(url);
-      if (!res.ok) {
-        console.error(`❌ Failed to load ${filename}:`, res.status, res.statusText);
-        throw new Error(`Failed to fetch ${filename}: ${res.status}`);
-      }
-      const text = await res.text();
-      console.log('🔍 Raw markdown content for', filename, ':\n', text);
-      return text;
+      const res = await fetch(`blog/${filename}`);
+      if (!res.ok) throw new Error(`Failed to fetch ${filename}: ${res.status}`);
+      return res.text();
     }
 
     (async () => {
-      const listEl = document.getElementById('post-list');
+      const listEl    = document.getElementById('post-list');
       const contentEl = document.getElementById('post-content');
-      const post = getQueryParam('post');
+      const post      = getQueryParam('post');
 
-      try {
-        const index = await loadIndex();
-
-        if (post) {
-          // Render single post
-          listEl.style.display = 'none';
-          contentEl.style.display = 'block';
+      if (post) {
+        // Single-post flow
+        try {
           const md = await loadMarkdown(post);
-          contentEl.innerHTML = marked(md);
-        } else {
-          // Render list of posts
+          listEl.style.display    = 'none';
+          contentEl.innerHTML      = marked(md);
+          contentEl.style.display  = 'block';
+        } catch (err) {
+          console.error('Error loading post:', err);
+          listEl.style.display = 'block';
+          listEl.innerHTML     = '<p class="text-red-600">Error loading this post. Please try again later.</p>';
+        }
+      } else {
+        // Index-list flow
+        try {
+          const index = await loadIndex();
           listEl.innerHTML = '';
           if (!index.length) {
             listEl.innerHTML = '<p>No blog posts found.</p>';
-            return;
+          } else {
+            index.forEach(({ filename, title, date }) => {
+              const div = document.createElement('div');
+              div.className = 'border-b pb-4';
+              div.innerHTML = `
+                <a href="?post=${filename}" class="text-xl font-semibold text-green-700 hover:underline">
+                  ${title}
+                </a>
+                <p class="text-gray-500 text-sm">${date}</p>
+              `;
+              listEl.appendChild(div);
+            });
           }
-          index.forEach(({ filename, title, date }) => {
-            const div = document.createElement('div');
-            div.className = 'border-b pb-4';
-            div.innerHTML = `
-              <a href="?post=${filename}" class="text-xl font-semibold text-green-700 hover:underline">
-                ${title}
-              </a>
-              <p class="text-gray-500 text-sm">${date}</p>
-            `;
-            listEl.appendChild(div);
-          });
+        } catch (err) {
+          console.error('Error loading blog index:', err);
+          listEl.innerHTML = '<p class="text-red-600">Error loading blog. Please try again later.</p>';
         }
-      } catch (err) {
-        console.error('Error in blog loader:', err);
-        listEl.innerHTML = '<p class="text-red-600">Error loading blog. Check console for details.</p>';
       }
     })();
   </script>
