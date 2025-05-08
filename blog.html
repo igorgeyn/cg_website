@@ -36,7 +36,7 @@
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- Main Content -->
   <main class="pt-20 container mx-auto px-6 py-12">
     <div id="post-list" class="space-y-8 text-center text-gray-600">
       Loading posts…
@@ -61,12 +61,18 @@
       return JSON.parse(raw);
     }
 
+    // Debug version: log the markdown text on load
     async function loadMarkdown(filename) {
       const url = `blog/${filename}`;
-      console.log('🔍 Fetching markdown from:', url);
+      console.log('🔍 Attempting to fetch post at:', url);
       const res = await fetch(url);
-      if (!res.ok) throw new Error(`Failed to fetch ${filename}: ${res.status}`);
-      return res.text();
+      if (!res.ok) {
+        console.error(`❌ Failed to load ${filename}:`, res.status, res.statusText);
+        throw new Error(`Failed to fetch ${filename}: ${res.status}`);
+      }
+      const text = await res.text();
+      console.log('🔍 Raw markdown content for', filename, ':\n', text);
+      return text;
     }
 
     (async () => {
