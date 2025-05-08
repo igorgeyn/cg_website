@@ -6,10 +6,19 @@
   <title>Nori's Nibbles — Simple One-Page</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Swiper CSS & JS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; }
@@ -35,15 +44,21 @@
   </header>
 
   <!-- Hero -->
-  <section id="hero" class="relative h-screen bg-cover bg-center" style="background-image: url('images/cat-grass-1.jpg')">
+  <section
+    id="hero"
+    class="relative h-screen bg-cover bg-center"
+    style="background-image: url('images/cat-grass-1.jpg')"
+  >
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-white">Organic Cat Grass</h1>
+      <h1 class="text-4xl md:text-6xl font-bold text-white">All-Organic, Locally Sourced Cat Grass</h1>
       <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
-        Fresh, pesticide-free wheatgrass for happy, healthy kitties.
+        Delivering gut health and peace of mind to Contra Costa’s kitty population.
       </p>
-      <a href="#order"
-         class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">
+      <a
+        href="#order"
+        class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition"
+      >
         Order Now
       </a>
     </div>
@@ -78,13 +93,11 @@
     <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h2 class="text-3xl font-semibold mb-4">Our Story</h2>
-        <p class="mb-4">Hi, I'm Igor! I'm a lifelong Bay Area dweller—not counting a couple journeys to southern California and Washington, DC—and have lived in Contra Costa County since 2015. Nori's Nibbles is a project to grow the highest quality, healthiest cat grass using all-natural seeds, zero-waste practices, and—best of all—local sourcing.</p>
-        <br>
-        <p>NN began, like a lot of these things to do, as a personal project: My wife and I moved back to the Bay from Los Angeles, where we lived on the ground floor and our kitties had regular access to a grassy patch on the patio. Unfortunately, once back in the Bay, our apartment was no longer on the ground floor—and there went nibble time for the cats. Fortunately, we had just enough room on the balcony to set up a small, DIY growing operatoin, so I decided to give cat grass a try. </p>
-        <br>
-        <p>Fortunately, the green stuff took, the cats were back in their happy place—including their guts!—and my wife and I were able to breathe a little easier. <b>Nori's Nibbles—named after our beloved little black Bombay cat, Nori.</b>(If you click through the photos, you'll likely find her munching on a patch or two.)</p>
-        <br>
-        We hope you find something you like in our all-organic, all-local collection—and that you tell your friends! I try to make all local deliveries by bike, and optimize the ones by car to consume as little gasoline as possible. Thanks!
+        <p class="mb-4">
+          Hi, I’m Igor! I’m a lifelong Bay Area dweller—and Nori’s Nibbles is my small-batch
+          project to grow the highest quality, healthiest cat grass using all-natural seeds,
+          zero-waste practices, and local sourcing.
+        </p>
         <h2 class="text-3xl font-semibold mb-4">Mission & Values</h2>
         <ul class="list-disc list-inside space-y-2 text-gray-700">
           <li>100% pesticide-free, small-batch farming</li>
@@ -93,7 +106,11 @@
         </ul>
       </div>
       <div>
-        <img src="images/cat-grass-11.jpg" alt="Grower tending grass" class="rounded-lg shadow-lg object-cover w-full h-64">
+        <img
+          src="images/cat-grass-11.jpg"
+          alt="Grower tending grass"
+          class="rounded-lg shadow-lg object-cover w-full h-64"
+        >
       </div>
     </div>
   </section>
@@ -132,11 +149,43 @@
     <div class="max-w-4xl mx-auto text-center mb-8">
       <h2 class="text-3xl font-semibold">Gallery</h2>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
-      <img src="images/cat-grass-2.jpg" alt="Cat with grass" class="rounded-lg shadow-md">
-      <img src="images/cat-grass-3.jpg" alt="Cat nibbling" class="rounded-lg shadow-md">
-      <img src="images/cat-grass-4.jpg" alt="Fresh pots" class="rounded-lg shadow-md">
-      <img src="images/cat-grass-5.jpg" alt="Kitty happy" class="rounded-lg shadow-md">
+
+    <!-- Swiper container -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img
+            src="images/cat-grass-2.jpg"
+            alt="Cat with grass"
+            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
+          />
+        </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img
+            src="images/cat-grass-3.jpg"
+            alt="Cat nibbling"
+            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
+          />
+        </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img
+            src="images/cat-grass-4.jpg"
+            alt="Fresh pots"
+            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
+          />
+        </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img
+            src="images/cat-grass-5.jpg"
+            alt="Kitty happy"
+            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
+          />
+        </div>
+        <!-- add more slides as needed -->
+      </div>
+      <div class="swiper-button-prev text-green-800 text-2xl"></div>
+      <div class="swiper-button-next text-green-800 text-2xl"></div>
+      <div class="swiper-pagination mt-4"></div>
     </div>
   </section>
 
@@ -179,8 +228,10 @@
     <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
       <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
-      <a href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order"
-         class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">
+      <a
+        href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order"
+        class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition"
+      >
         Email Your Order
       </a>
     </div>
@@ -192,10 +243,17 @@
       <h2 class="text-3xl font-semibold mb-4">Get 10% Off Your First Order</h2>
       <p class="mb-6 text-gray-700">Join our newsletter for tips, specials, and more.</p>
       <form action="#" method="POST" class="flex flex-col sm:flex-row gap-4 justify-center">
-        <input type="email" name="email" required placeholder="Your email"
-               class="w-full sm:w-auto flex-grow border border-green-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
-        <button type="submit"
-                class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-6 rounded transition">
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Your email"
+          class="w-full sm:w-auto flex-grow border border-green-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+        />
+        <button
+          type="submit"
+          class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-6 rounded transition"
+        >
           Subscribe
         </button>
       </form>
@@ -218,6 +276,37 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    new Swiper('.swiper', {
+      autoHeight: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      },
+    });
+  </script>
 
 </body>
 </html>
