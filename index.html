@@ -21,29 +21,90 @@
 <body class="bg-white text-gray-800 leading-relaxed">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
+  <!-- <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
     <div class="container mx-auto px-6 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-white">Nori’s Nibbles</h1>
       <nav>
         <ul class="flex space-x-4 text-sm font-medium">
-          <li><a href="#hero" class="text-white hover:text-green-200">Home</a></li>
-          <li><a href="#about" class="text-white hover:text-green-200">About</a></li>
-          <li><a href="#features" class="text-white hover:text-green-200">Benefits</a></li>
-          <li><a href="#gallery" class="text-white hover:text-green-200">Gallery</a></li>
-          <li><a href="#order" class="text-white hover:text-green-200">Order</a></li>
-          <li><a href="blog.html" class="text-white hover:text-green-200">Blog</a></li>
+          <li><a href="#hero"           class="text-white hover:text-green-200">Home</a></li>
+          <li><a href="#about"          class="text-white hover:text-green-200">About</a></li>
+          <li><a href="pricing.html"    class="text-white hover:text-green-200">Pricing</a></li>
+          <li><a href="#features"       class="text-white hover:text-green-200">Benefits</a></li>
+          <li><a href="#gallery"        class="text-white hover:text-green-200">Gallery</a></li>
+          <li><a href="#order"          class="text-white hover:text-green-200">Order</a></li>
+          <li><a href="blog.html"       class="text-white hover:text-green-200">Blog</a></li>
         </ul>
       </nav>
     </div>
-  </header>
+  </header> -->
+  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
+    <div class="container mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-white">Nori’s Nibbles of Saranap</h1>
+      <nav>
+        <ul class="flex space-x-4 text-sm font-medium">
+          <!-- Home (always back to your main one-pager) -->
+          <li>
+            <a href="index.html#hero" 
+            class="text-white hover:text-green-200 underline">
+              Home
+            </a>
+          </li>
+          <!-- About -->
+          <li>
+            <a href="index.html#about"
+               class="text-white hover:text-green-200">
+              About
+            </a>
+          </li>
+          <!-- Pricing -->
+          <li>
+            <a href="pricing.html"
+               class="text-white hover:text-green-200
+                      ">
+              Pricing
+            </a>
+          </li>
+          <!-- Benefits -->
+          <li>
+            <a href="index.html#features"
+               class="text-white hover:text-green-200">
+              Benefits
+            </a>
+          </li>
+          <!-- Gallery -->
+          <li>
+            <a href="index.html#gallery"
+               class="text-white hover:text-green-200">
+              Gallery
+            </a>
+          </li>
+          <!-- Order -->
+          <li>
+            <a href="index.html#order"
+               class="text-white hover:text-green-200">
+              Order
+            </a>
+          </li>
+          <!-- Blog -->
+          <li>
+            <a href="blog.html"
+               class="text-white hover:text-green-200
+                      ">
+              Blog
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>  
 
   <!-- Hero -->
   <section id="hero" class="relative h-screen bg-cover bg-center" style="background-image:url('images/cat-grass-1.jpg')">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-white">All-Organic, Locally Sourced Cat Grass</h1>
+      <h1 class="text-4xl md:text-6xl font-bold text-white">Nori's Nibbles of Saranap</h1>
       <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
-        For your kitty's gut health and your peace of mind.
+        All-organic, locally sourced cat grass.
       </p>
       <a href="#order" class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">
         Order Now
@@ -147,6 +208,15 @@
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
           <img src="images/cat-grass-8.jpg" alt="Eighth image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-9.jpg" alt="Ninth image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-10.jpg" alt="Tenth image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-11.jpg" alt="Eleventh image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
       </div>
       <div class="swiper-button-prev text-green-800 text-2xl"></div>
       <div class="swiper-button-next text-green-800 text-2xl"></div>
@@ -178,14 +248,14 @@
           <summary class="font-medium cursor-pointer">How often should I replace the grass?</summary>
           <p class="mt-2 text-gray-600">Replace every 7–10 days for peak freshness.</p>
         </details>
-        <details class="border rounded-lg p-4">
+        <!-- <details class="border rounded-lg p-4">
           <summary class="font-medium cursor-pointer">Do you ship nationwide?</summary>
           <p class="mt-2 text-gray-600">Yes! Fast, insulated shipping to all 50 states.</p>
         </details>
         <details class="border rounded-lg p-4">
           <summary class="font-medium cursor-pointer">What if my order arrives damaged?</summary>
           <p class="mt-2 text-gray-600">Email us within 24 hrs and we’ll send a replacement.</p>
-        </details>
+        </details> -->
       </div>
     </div>
   </section>
@@ -195,7 +265,7 @@
     <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
       <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
-      <a href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order"
+      <a href="mailto:igorgeyn@gmail.com?subject=Cat%20Grass%20Order"
          class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">
         Email Your Order
       </a>
@@ -203,7 +273,7 @@
   </section>
 
   <!-- Newsletter -->
-  <section id="newsletter" class="py-16 px-4 bg-gray-50">
+  <!-- <section id="newsletter" class="py-16 px-4 bg-gray-50">
     <div class="max-w-lg mx-auto text-center">
       <h2 class="text-3xl font-semibold mb-4">Get 10% Off Your First Order</h2>
       <p class="mb-6 text-gray-700">Join our newsletter for tips, specials, and more.</p>
@@ -217,7 +287,7 @@
       </form>
     </div>
   </section>
-
+ -->
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-600 text-sm">
     <div class="space-y-2">
