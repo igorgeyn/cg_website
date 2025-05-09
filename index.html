@@ -7,18 +7,12 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Swiper CSS & JS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/swiper/swiper-bundle.min.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; }
@@ -90,30 +84,35 @@
 
   <!-- About & Mission -->
   <section id="about" class="py-16 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <!-- Our Story Column -->
       <div>
         <h2 class="text-3xl font-semibold mb-4">Our Story</h2>
-        <p class="mb-4">Hi, I'm Igor! I'm a lifelong Bay Area dweller—not counting a couple journeys to southern California and Washington, DC—and have lived in Contra Costa County since 2015. Nori's Nibbles is a project to grow the highest quality, healthiest cat grass using all-natural seeds, zero-waste practices, and—best of all—local sourcing.</p>
-        <br>
-        <p>NN began, like a lot of these things to do, as a personal project: My wife and I moved back to the Bay from Los Angeles, where we lived on the ground floor and our kitties had regular access to a grassy patch on the patio. Unfortunately, once back in the Bay, our apartment was no longer on the ground floor—and there went nibble time for the cats. Fortunately, we had just enough room on the balcony to set up a small, DIY growing operatoin, so I decided to give cat grass a try. </p>
-        <br>
-        <p>Fortunately, the green stuff took, the cats were back in their happy place—including their guts!—and my wife and I were able to breathe a little easier. <b>Nori's Nibbles—named after our beloved little black Bombay cat, Nori.</b>(If you click through the photos, you'll likely find her munching on a patch or two.)</p>
-        <br>
-        We hope you find something you like in our all-organic, all-local collection—and that you tell your friends! I try to make all local deliveries by bike, and optimize the ones by car to consume as little gasoline as possible. Thanks!
-        <br>
-        <h2 class="text-3xl font-semibold mb-4">Mission & Values</h2>
-        <ul class="list-disc list-inside space-y-2 text-gray-700">
-          <li>100% pesticide-free, small-batch farming</li>
-          <li>Eco-friendly packaging & local delivery</li>
-          <li>Commitment to happy, healthy cats</li>
-        </ul>
+        <p class="mb-4">
+          Hello, I'm Igor! I'm a lifelong Bay Area dweller—not counting a couple journeys to southern California and Washington, DC. My family has been in Contra Costa County since 2015. Nori's Nibbles is a project to grow the highest quality, healthiest cat grass using all-natural seeds, zero-waste practices, and local sourcing.
+        </p>
+        <p class="mb-4">
+          The project began, like many personal ventures, out of necessity: my kitties missed their grassy patio back in LA. I rigged a DIY balcony garden and soon discovered that fresh grass made everyone—cats and humans—a lot happier.
+        </p>
       </div>
-      <div>
+      <!-- Image Column -->
+      <div class="flex items-center justify-center">
         <img
           src="images/cat-grass-11.jpg"
           alt="Grower tending grass"
-          class="rounded-lg shadow-lg object-cover w-full h-64"
-        >
+          class="rounded-lg shadow-lg object-cover w-full max-w-sm h-auto max-h-80"
+        />
+      </div>
+      <!-- Mission & Values (spans both columns) -->
+      <div class="md:col-span-2 flex justify-center mt-12">
+        <div class="max-w-md text-center">
+          <h2 class="text-3xl font-semibold mb-4">Mission &amp; Values</h2>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>100% pesticide-free, small-batch farming</li>
+            <li>Eco-friendly packaging &amp; local delivery</li>
+            <li>Commitment to happy, healthy cats</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -126,22 +125,22 @@
         <div>
           <div class="text-4xl mb-2">🌱</div>
           <h4 class="font-medium mb-1">We <b>Grow</b></h4>
-          <p class="text-gray-600">organic seeds into lush, healthy cat grass with no non-organic additives.</p>
+          <p class="text-gray-600">organic seeds into lush, healthy cat grass.</p>
         </div>
         <div>
           <div class="text-4xl mb-2">✂️</div>
           <h4 class="font-medium mb-1">We <b>Harvest</b></h4>
-          <p class="text-gray-600">all grass by hand, making sure to check for any defects or plant illness.</p>
+          <p class="text-gray-600">by hand to ensure top freshness.</p>
         </div>
         <div>
           <div class="text-4xl mb-2">📦</div>
           <h4 class="font-medium mb-1">We <b>Pack</b></h4>
-          <p class="text-gray-600">the cat grass into a container of your choice, including customization and decoration to fit any special occasions.</p>
+          <p class="text-gray-600">in compostable pots with care.</p>
         </div>
         <div>
           <div class="text-4xl mb-2">🚚</div>
           <h4 class="font-medium mb-1">We <b>Deliver</b></h4>
-          <p class="text-gray-600">all product ourselves, by bike if time and distance allow, ensuring you get to ask any questions you may have.</p>
+          <p class="text-gray-600">locally by bike or optimized routes.</p>
         </div>
       </div>
     </div>
@@ -156,80 +155,36 @@
     <!-- Swiper container -->
     <div class="swiper">
       <div class="swiper-wrapper">
-        <!-- AI / STOCK IMAGE -->
-        <!-- <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-2.jpg"
-            alt="Cat with grass"
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div> -->
-        <!-- AI / STOCK IMAGE -->
-        <!-- <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-3.jpg"
-            alt="Cat nibbling"
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div> -->
-        <!-- AI / STOCK IMAGE -->
-        <!-- <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-4.jpg"
-            alt="Fresh pots"
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div> -->
+        <!-- AI / STOCK IMAGE (commented out) -->
+        <!--
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-5.jpg"
-            alt="Kitty happy"
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
+          <img src="images/cat-grass-2.jpg" alt="Cat with grass" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
+        -->
+        <!-- AI / STOCK IMAGE (commented out) -->
+        <!--
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-3.jpg" alt="Cat nibbling" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
+        -->
+        <!-- AI / STOCK IMAGE (commented out) -->
+        <!--
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-4.jpg" alt="Fresh pots" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
+        </div>
+        -->
+        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+          <img src="images/cat-grass-5.jpg" alt="Kitty happy" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-6.jpg"
-            alt="Sixth cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
+          <img src="images/cat-grass-6.jpg" alt="Sixth cat grass scroller image." class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-7.jpg"
-            alt="Seventh cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
+          <img src="images/cat-grass-7.jpg" alt="Seventh cat grass scroller image." class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-8.jpg"
-            alt="Eighth cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
+          <img src="images/cat-grass-8.jpg" alt="Eighth cat grass scroller image." class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
-        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-9.jpg"
-            alt="Ninth cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div>
-        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-10.jpg"
-            alt="Tenth cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div>
-        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
-          <img
-            src="images/cat-grass-11.jpg"
-            alt="Eleventh cat grass scroller image."
-            class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"
-          />
-        </div>
-        <!-- add more slides as needed -->
       </div>
       <div class="swiper-button-prev text-green-800 text-2xl"></div>
       <div class="swiper-button-next text-green-800 text-2xl"></div>
@@ -244,7 +199,7 @@
       <div class="space-y-8">
         <!-- <blockquote class="italic text-gray-700">“My kitty went nuts for this grass—no more hairballs!”</blockquote>
         <p class="font-semibold">— @whiskersandme</p> -->
-        <blockquote class="italic text-gray-700">As soon as I put down she was all over it! Thanks again :)”</blockquote>
+        <blockquote class="italic text-gray-700">As soon as I put down she was all over it! Thanks again :)</blockquote>
         <p class="font-semibold">— May 2025 Customer</p>
       </div>
     </div>
@@ -276,12 +231,7 @@
     <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
       <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
-      <a
-        href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order"
-        class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition"
-      >
-        Email Your Order
-      </a>
+      <a href="mailto:orders@norisnibbles.com?subject=Cat%20Grass%20Order" class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">Email Your Order</a>
     </div>
   </section>
 
@@ -291,19 +241,8 @@
       <h2 class="text-3xl font-semibold mb-4">Get 10% Off Your First Order</h2>
       <p class="mb-6 text-gray-700">Join our newsletter for tips, specials, and more.</p>
       <form action="#" method="POST" class="flex flex-col sm:flex-row gap-4 justify-center">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="Your email"
-          class="w-full sm:w-auto flex-grow border border-green-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
-        />
-        <button
-          type="submit"
-          class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-6 rounded transition"
-        >
-          Subscribe
-        </button>
+        <input type="email" name="email" required placeholder="Your email" class="w-full sm:w-auto flex-grow border border-green-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-green-400"/>
+        <button type="submit" class="bg-green-500 hover:bg-green-400 text-white font-semibold py-2 px-6 rounded transition">Subscribe</button>
       </form>
     </div>
   </section>
@@ -318,10 +257,7 @@
         <a href="#faq" class="underline hover:text-green-700">FAQ</a>
         <a href="blog.html" class="underline hover:text-green-700">Blog</a>
       </nav>
-      <p>
-        <a href="#" class="underline hover:text-green-700">Instagram</a> |
-        <a href="#" class="underline hover:text-green-700">Facebook</a>
-      </p>
+      <p><a href="#" class="underline hover:text-green-700">Instagram</a> | <a href="#" class="underline hover:text-green-700">Facebook</a></p>
     </div>
   </footer>
 
@@ -331,28 +267,13 @@
       slidesPerView: 1,
       spaceBetween: 10,
       loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
       breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-      },
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 30 },
+        1024: { slidesPerView: 4, spaceBetween: 40 }
+      }
     });
   </script>
 
