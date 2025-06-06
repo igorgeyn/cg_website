@@ -98,55 +98,48 @@
     </div>
   </header>  
 
-  <!-- Hero -->
-  <!-- <section id="hero" class="relative h-screen bg-cover bg-center" style="background-image:url('images/cat-grass-1.jpg')">
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-white">Nori's Nibbles of Saranap</h1>
-      <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
-        All-organic, locally sourced cat grass.
-      </p>
-      <a href="#order" class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">
-        Order Now
-      </a>
+  <!-- Modified Hero with Tiled Image Gallery -->
+  <section id="hero" class="relative py-16 bg-green-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <!-- Text Content -->
+        <div class="md:w-1/2 mb-6 md:mb-0 text-center md:text-left">
+          <h1 class="text-3xl md:text-4xl font-bold text-green-800">Nori's Nibbles of Saranap</h1>
+          <p class="mt-4 text-lg text-gray-700">
+            All-organic, locally sourced cat grass.
+          </p>
+          <a href="#order" class="mt-6 inline-block bg-green-400 hover:bg-green-300 text-green-900 font-semibold py-3 px-8 rounded-full transition">
+            Order Now
+          </a>
+        </div>
+        
+        <!-- Tiled Image Gallery - 4 Images -->
+        <div class="md:w-1/2">
+          <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+            <!-- Top Left Image -->
+            <div class="aspect-square overflow-hidden rounded-tl-lg shadow-md">
+              <img src="images/cat-grass-1.jpg" alt="Cat with grass" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            </div>
+            
+            <!-- Top Right Image -->
+            <div class="aspect-square overflow-hidden rounded-tr-lg shadow-md">
+              <img src="images/cat-grass-5.jpg" alt="Kitty happy" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            </div>
+            
+            <!-- Bottom Left Image -->
+            <div class="aspect-square overflow-hidden rounded-bl-lg shadow-md">
+              <img src="images/cat-grass-7.jpg" alt="Cat grass" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            </div>
+            
+            <!-- Bottom Right Image -->
+            <div class="aspect-square overflow-hidden rounded-br-lg shadow-md">
+              <img src="images/cat-grass-9.jpg" alt="Cat with grass" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section> -->
-  <!-- Hero – redesigned with two side‐images + centered text -->
-<section id="hero" class="py-16 bg-white">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 px-4">
-    
-    <!-- Left image -->
-    <img
-      src="images/cat-grass-2.jpg"
-      alt="Cat nibbling fresh grass"
-      class="w-full md:w-1/4 h-64 object-cover rounded-lg shadow-lg"
-    />
-
-    <!-- Center text block -->
-    <div class="text-center max-w-xl space-y-6">
-      <h1 class="text-4xl md:text-5xl font-bold text-green-800">
-        All-Organic, Locally Sourced Cat Grass
-      </h1>
-      <p class="text-lg text-gray-700">
-        Fresh, vibrant grass grown with love in Contra Costa County. Perfect for your kitty’s gut health and a crunchy snack.
-      </p>
-      <a
-        href="#order"
-        class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-8 rounded-full transition"
-      >
-        Order Now
-      </a>
-    </div>
-
-    <!-- Right image -->
-    <img
-      src="images/cat-grass-3.jpg"
-      alt="Pots of cat grass"
-      class="w-full md:w-1/4 h-64 object-cover rounded-lg shadow-lg"
-    />
-
-  </div>
-</section>
+  </section>
 
   <!-- Features -->
   <section id="features" class="py-16 px-4 text-center">
