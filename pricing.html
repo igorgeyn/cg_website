@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pricing - Nori's Nibbles of Saranap</title>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDHQ4QD341"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YDHQ4QD341');
+  </script>
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Font -->
@@ -17,155 +27,198 @@
 </head>
 <body class="bg-white text-gray-800 leading-relaxed">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
-    <div class="container mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-white">Nori's Nibbles of Saranap</h1>
-      <nav>
-        <ul class="flex space-x-4 text-sm font-medium">
-          <!-- Home -->
-          <li>
-            <a href="index.html#hero" 
-            class="text-white hover:text-green-200">
-              Home
-            </a>
-          </li>
-          <!-- About -->
-          <li>
-            <a href="index.html#about"
-               class="text-white hover:text-green-200">
-              About
-            </a>
-          </li>
-          <!-- Pricing -->
-          <li>
-            <a href="pricing.html"
-               class="text-white hover:text-green-200 underline">
-              Pricing
-            </a>
-          </li>
-          <!-- Benefits -->
-          <li>
-            <a href="index.html#features"
-               class="text-white hover:text-green-200">
-              Benefits
-            </a>
-          </li>
-          <!-- Gallery -->
-          <li>
-            <a href="index.html#gallery"
-               class="text-white hover:text-green-200">
-              Gallery
-            </a>
-          </li>
-          <!-- Order -->
-          <li>
-            <a href="index.html#order"
-               class="text-white hover:text-green-200">
-              Order
-            </a>
-          </li>
-          <!-- Blog -->
-          <li>
-            <a href="blog.html"
-               class="text-white hover:text-green-200">
-              Blog
-            </a>
-          </li>
-        </ul>
-      </nav>
+  <!-- Mobile-Optimized Header -->
+  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-3 shadow">
+    <div class="container mx-auto px-4">
+      <!-- Mobile: Stack title and nav -->
+      <div class="block md:hidden">
+        <h1 class="text-lg font-bold text-white text-center mb-2">Nori's Nibbles of Saranap</h1>
+        <nav class="overflow-x-auto">
+          <ul class="flex space-x-3 text-xs font-medium whitespace-nowrap">
+            <li><a href="index.html#hero" class="text-white hover:text-green-200">Home</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-green-200">About</a></li>
+            <li><a href="pricing.html" class="text-white hover:text-green-200 underline">Pricing</a></li>
+            <li><a href="index.html#features" class="text-white hover:text-green-200">Benefits</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-green-200">Gallery</a></li>
+            <li><a href="index.html#order" class="text-white hover:text-green-200">Order</a></li>
+            <li><a href="blog.html" class="text-white hover:text-green-200">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Desktop: Side by side -->
+      <div class="hidden md:flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-white">Nori's Nibbles of Saranap</h1>
+        <nav>
+          <ul class="flex space-x-4 text-sm font-medium">
+            <li><a href="index.html#hero" class="text-white hover:text-green-200">Home</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-green-200">About</a></li>
+            <li><a href="pricing.html" class="text-white hover:text-green-200 underline">Pricing</a></li>
+            <li><a href="index.html#features" class="text-white hover:text-green-200">Benefits</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-green-200">Gallery</a></li>
+            <li><a href="index.html#order" class="text-white hover:text-green-200">Order</a></li>
+            <li><a href="blog.html" class="text-white hover:text-green-200">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <!-- Page Title -->
-  <!-- <section class="py-12 bg-green-50">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold text-center text-green-800">Pricing</h1>
-      <p class="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
-        Choose the perfect size of organic cat grass for your feline friend.
-      </p>
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-8 md:py-16 px-4 bg-green-50">
+    <!-- Heading -->
+    <div class="max-w-5xl mx-auto text-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-semibold text-green-800">Pricing</h2>
+      <p class="text-gray-700">Choose the perfect size of organic cat grass for your feline friend.</p>
     </div>
-  </section> -->
 
-  <!-- Pricing Plans -->
-  <!-- Pricing -->
-<section id="pricing" class="py-16 px-4 bg-green-50">
-  <!-- Heading -->
-  <div class="max-w-5xl mx-auto text-center mb-8">
-    <h2 class="text-3xl font-semibold text-green-800">Pricing</h2>
-    <p class="text-gray-700">Choose the perfect size of organic cat grass for your feline friend.</p>
-  </div>
+    <!-- Mobile: Single column, Desktop: Three columns -->
+    <div class="container mx-auto max-w-5xl px-4">
+      <!-- Mobile Layout -->
+      <div class="block md:hidden space-y-6">
+        <!-- Small Chunk - Mobile -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/cat-grass-5.jpg" alt="Small Chunk" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-green-800 mb-2">Small Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$5<span class="text-base font-normal">/pot</span></p>
+            <ul class="text-left space-y-2 text-gray-700 mb-6">
+              <li>• Perfect for single-cat households</li>
+              <li>• 4"-by-4" piece in a compostable container</li>
+              <li>• Lasts 7–10 days</li>
+              <li>• 100% organic</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=Small%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Small Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
 
-  <!-- Three-column pricing grid -->
-  <div class="container mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-    <!-- Small Chunk -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/cat-grass-5.jpg" alt="Small Chunk" class="w-full h-40 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold text-green-800 mb-1">Small Chunk</h3>
-        <p class="text-3xl font-bold text-green-700 mb-4">$5<span class="text-base font-normal">/pot</span></p>
-        <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
-          <li>Perfect for single-cat households</li>
-          <li>4"-by-4" piece in a compostable container</li>
-          <li>Lasts 7–10 days</li>
-          <li>100% organic</li>
-        </ul>
-        <a href="#order" class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded">
-          Order Now
-        </a>
+        <!-- Large Chunk - Mobile -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden relative">
+          <div class="absolute top-3 right-3 bg-green-600 text-white text-sm px-3 py-1 rounded-full z-10">Most Popular</div>
+          <img src="images/cat-grass-6.jpg" alt="Large Chunk" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-green-800 mb-2">Large Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$7<span class="text-base font-normal">/pot</span></p>
+            <ul class="text-left space-y-2 text-gray-700 mb-6">
+              <li>• Ideal for multi-cat households</li>
+              <li>• 6"-by-6" piece in a compostable container</li>
+              <li>• Lasts 7–10 days</li>
+              <li>• 100% organic</li>
+              <li>• More than twice the size of the Small Chunk</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=Large%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Large Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
+
+        <!-- XL Chunk - Mobile -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/cat-grass-7.jpg" alt="XL Chunk" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-green-800 mb-2">Extra Large (XL) Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$10</p>
+            <ul class="text-left space-y-2 text-gray-700 mb-6">
+              <li>• For 3+ cats, or for green thumb users</li>
+              <li>• Full tray (roughly 1 ft × 2 ft) of cat grass</li>
+              <li>• Lasts 2–3+ weeks</li>
+              <li>• 100% organic</li>
+              <li>• Cut up into chunks for immediate or long-term use</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=XL%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'XL Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop: Three-column grid -->
+      <div class="hidden md:grid grid-cols-3 gap-8">
+        <!-- Small Chunk - Desktop -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/cat-grass-5.jpg" alt="Small Chunk" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-800 mb-1">Small Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$5<span class="text-base font-normal">/pot</span></p>
+            <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
+              <li>Perfect for single-cat households</li>
+              <li>4"-by-4" piece in a compostable container</li>
+              <li>Lasts 7–10 days</li>
+              <li>100% organic</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=Small%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Small Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Large Chunk - Desktop -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden relative">
+          <img src="images/cat-grass-6.jpg" alt="Large Chunk" class="w-full h-40 object-cover">
+          <span class="absolute top-3 right-3 bg-green-600 text-white text-sm px-3 py-1 rounded-full">Most Popular</span>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-800 mb-1">Large Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$7<span class="text-base font-normal">/pot</span></p>
+            <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
+              <li>Ideal for multi-cat households</li>
+              <li>6"-by-6" piece in a compostable container</li>
+              <li>Lasts 7–10 days</li>
+              <li>100% organic</li>
+              <li>More than twice the size of the Small Chunk</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=Large%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Large Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
+
+        <!-- XL Chunk - Desktop -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/cat-grass-7.jpg" alt="XL Chunk" class="w-full h-40 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-800 mb-1">Extra Large (XL) Chunk</h3>
+            <p class="text-3xl font-bold text-green-700 mb-4">$10</p>
+            <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
+              <li>For 3+ cats, or for green thumb users</li>
+              <li>Full tray (roughly 1 ft × 2 ft) of cat grass</li>
+              <li>Lasts 2–3+ weeks</li>
+              <li>100% organic</li>
+              <li>Cut up into chunks for immediate or long-term use</li>
+            </ul>
+            <a href="mailto:igorgeyn@gmail.com?subject=XL%20Chunk%20Order" 
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'XL Chunk Order' });"
+               class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded text-center">
+              Order Now
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Large Chunk -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden relative">
-      <img src="images/cat-grass-6.jpg" alt="Large Chunk" class="w-full h-40 object-cover">
-      <span class="absolute top-3 right-3 bg-green-600 text-white text-sm px-3 py-1 rounded-full">Most Popular</span>
-      <div class="p-6">
-        <h3 class="text-xl font-semibold text-green-800 mb-1">Large Chunk</h3>
-        <p class="text-3xl font-bold text-green-700 mb-4">$7<span class="text-base font-normal">/pot</span></p>
-        <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
-          <li>Ideal for multi-cat households</li>
-          <li>6"-by-6" piece in a compostable container</li>
-          <li>Lasts 7–10 days</li>
-          <li>100% organic</li>
-          <li>More than twice the size of the Small Chunk</li>
-        </ul>
-        <a href="#order" class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded">
-          Order Now
-        </a>
-      </div>
-    </div>
-
-    <!-- Extra Large (XL) Chunk -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="images/cat-grass-7.jpg" alt="XL Chunk" class="w-full h-40 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold text-green-800 mb-1">Extra Large (XL) Chunk</h3>
-        <p class="text-3xl font-bold text-green-700 mb-4">$10</p>
-        <ul class="list-inside list-disc space-y-2 text-gray-700 mb-6">
-          <li>For 3+ cats, or for green thumb users</li>
-          <li>Full tray (roughly 1 ft × 2 ft) of cat grass</li>
-          <li>Lasts 2–3+ weeks</li>
-          <li>100% organic</li>
-          <li>Cut up into chunks for immediate or long-term use</li>
-        </ul>
-        <a href="#order" class="block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 rounded">
-          Order Now
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Bulk Orders -->
-  <section class="py-16 bg-green-50">
+  <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-6">Need something bigger?</h2>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">Need something bigger?</h2>
         <p class="mb-8 text-gray-700">
           We offer special pricing for bulk orders and subscriptions. Perfect for cat cafés, shelters, or multiple-cat households.
         </p>
-        <a href="mailto:igorgeyn@gmail.com?subject=Bulk%20Order%20Inquiry" class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-8 rounded-lg transition">
+        <a href="mailto:igorgeyn@gmail.com?subject=Bulk%20Order%20Inquiry" 
+           onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Bulk Order Inquiry' });"
+           class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-8 rounded-lg transition">
           Contact for Bulk Pricing
         </a>
       </div>
@@ -173,15 +226,15 @@
   </section>
 
   <!-- Satisfaction Guarantee -->
-  <section class="py-16">
+  <section class="py-16 bg-green-50">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md border border-green-100">
+      <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-md border border-green-100">
         <div class="flex flex-col md:flex-row items-center gap-6">
           <div class="md:w-1/4 flex justify-center">
-            <div class="text-6xl text-green-500">🌱</div>
+            <div class="text-4xl md:text-6xl text-green-500">🌱</div>
           </div>
-          <div class="md:w-3/4">
-            <h3 class="text-2xl font-bold mb-4">Satisfaction Guaranteed</h3>
+          <div class="md:w-3/4 text-center md:text-left">
+            <h3 class="text-xl md:text-2xl font-bold mb-4">Satisfaction Guaranteed</h3>
             <p>
               If your cat doesn't love our grass (unlikely!), let us know within 7 days and we'll refund your purchase or send a replacement.
             </p>
