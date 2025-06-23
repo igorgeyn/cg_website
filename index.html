@@ -32,122 +32,113 @@
 </head>
 <body class="bg-white text-gray-800 leading-relaxed">
 
-  <!-- Header -->
-  <!-- <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
-    <div class="container mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-white">Nori's Nibbles</h1>
-      <nav>
-        <ul class="flex space-x-4 text-sm font-medium">
-          <li><a href="#hero"           class="text-white hover:text-green-200">Home</a></li>
-          <li><a href="#about"          class="text-white hover:text-green-200">About</a></li>
-          <li><a href="pricing.html"    class="text-white hover:text-green-200">Pricing</a></li>
-          <li><a href="#features"       class="text-white hover:text-green-200">Benefits</a></li>
-          <li><a href="#gallery"        class="text-white hover:text-green-200">Gallery</a></li>
-          <li><a href="#order"          class="text-white hover:text-green-200">Order</a></li>
-          <li><a href="blog.html"       class="text-white hover:text-green-200">Blog</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header> -->
-  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
-    <div class="container mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-white">Nori's Nibbles of Saranap</h1>
-      <nav>
-        <ul class="flex space-x-4 text-sm font-medium">
-          <!-- Home (always back to your main one-pager) -->
-          <li>
-            <a href="index.html#hero" 
-            class="text-white hover:text-green-200 underline">
-              Home
-            </a>
-          </li>
-          <!-- About -->
-          <li>
-            <a href="index.html#about"
-               class="text-white hover:text-green-200">
-              About
-            </a>
-          </li>
-          <!-- Pricing -->
-          <li>
-            <a href="pricing.html"
-               class="text-white hover:text-green-200
-                      ">
-              Pricing
-            </a>
-          </li>
-          <!-- Benefits -->
-          <li>
-            <a href="index.html#features"
-               class="text-white hover:text-green-200">
-              Benefits
-            </a>
-          </li>
-          <!-- Gallery -->
-          <li>
-            <a href="index.html#gallery"
-               class="text-white hover:text-green-200">
-              Gallery
-            </a>
-          </li>
-          <!-- Order -->
-          <li>
-            <a href="index.html#order"
-               class="text-white hover:text-green-200">
-              Order
-            </a>
-          </li>
-          <!-- Blog -->
-          <li>
-            <a href="blog.html"
-               class="text-white hover:text-green-200
-                      ">
-              Blog
-            </a>
-          </li>
-        </ul>
-      </nav>
+  <!-- Mobile-Optimized Header -->
+  <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-3 shadow">
+    <div class="container mx-auto px-4">
+      <!-- Mobile: Stack title and nav -->
+      <div class="block md:hidden">
+        <h1 class="text-lg font-bold text-white text-center mb-2">Nori's Nibbles of Saranap</h1>
+        <nav class="overflow-x-auto">
+          <ul class="flex space-x-3 text-xs font-medium whitespace-nowrap">
+            <li><a href="index.html#hero" class="text-white hover:text-green-200 underline">Home</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-green-200">About</a></li>
+            <li><a href="pricing.html" class="text-white hover:text-green-200">Pricing</a></li>
+            <li><a href="index.html#features" class="text-white hover:text-green-200">Benefits</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-green-200">Gallery</a></li>
+            <li><a href="index.html#order" class="text-white hover:text-green-200">Order</a></li>
+            <li><a href="blog.html" class="text-white hover:text-green-200">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Desktop: Side by side -->
+      <div class="hidden md:flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-white">Nori's Nibbles of Saranap</h1>
+        <nav>
+          <ul class="flex space-x-4 text-sm font-medium">
+            <li><a href="index.html#hero" class="text-white hover:text-green-200 underline">Home</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-green-200">About</a></li>
+            <li><a href="pricing.html" class="text-white hover:text-green-200">Pricing</a></li>
+            <li><a href="index.html#features" class="text-white hover:text-green-200">Benefits</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-green-200">Gallery</a></li>
+            <li><a href="index.html#order" class="text-white hover:text-green-200">Order</a></li>
+            <li><a href="blog.html" class="text-white hover:text-green-200">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>  
 
-  <!-- Hero -->
-<!-- Hero – redesigned with two side‐images + centered text -->
-<section id="hero" class="py-16 bg-white">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 px-4">
-    
-    <!-- Left image -->
-    <img
-      src="images/cg_planting.jpg"
-      alt="Cat nibbling fresh grass"
-      class="w-full md:w-1/4 h-64 object-cover rounded-lg shadow-lg"
-    />
+  <!-- Mobile-Optimized Hero -->
+  <section id="hero" class="py-8 md:py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Mobile: Single column layout -->
+      <div class="block md:hidden space-y-6">
+        <!-- Mobile: Title first -->
+        <div class="text-center">
+          <h1 class="text-3xl font-bold text-green-800 mb-4">Nori's Nibbles</h1>
+          <p class="text-base text-gray-700 mb-6">
+            All-organic, non-GMO cat grass sourced regionally and grown locally in Contra Costa County, CA.
+          </p>
+          <a
+            href="#order"
+            onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Order Button' });"
+            class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded-full transition"
+          >
+            Order Now
+          </a>
+        </div>
+        
+        <!-- Mobile: Images below text -->
+        <div class="grid grid-cols-2 gap-4">
+          <img
+            src="images/cg_planting.jpg"
+            alt="Cat nibbling fresh grass"
+            class="w-full h-40 object-cover rounded-lg shadow-lg"
+          />
+          <img
+            src="images/nori-gazing.jpg"
+            alt="Pots of cat grass"
+            class="w-full h-40 object-cover rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+      
+      <!-- Desktop: Original three-column layout -->
+      <div class="hidden md:flex flex-row items-center justify-center space-x-8">
+        <!-- Left image -->
+        <img
+          src="images/cg_planting.jpg"
+          alt="Cat nibbling fresh grass"
+          class="w-1/4 h-64 object-cover rounded-lg shadow-lg"
+        />
 
-    <!-- Center text block -->
-    <div class="text-center max-w-xl space-y-6">
-      <h1 class="text-4xl md:text-5xl font-bold text-green-800">
-        Nori's Nibbles
-      </h1>
-      <p class="text-lg text-gray-700">
-        All-organic, non-GMO cat grass source regionally and grown locally in Contra Costa County, CA.
-      </p>
-      <a
-        href="#order"
-        onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Order Button' });"
-        class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-8 rounded-full transition"
-      >
-        Order Now
-      </a>
+        <!-- Center text block -->
+        <div class="text-center max-w-xl space-y-6">
+          <h1 class="text-4xl md:text-5xl font-bold text-green-800">
+            Nori's Nibbles
+          </h1>
+          <p class="text-lg text-gray-700">
+            All-organic, non-GMO cat grass sourced regionally and grown locally in Contra Costa County, CA.
+          </p>
+          <a
+            href="#order"
+            onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Order Button' });"
+            class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-8 rounded-full transition"
+          >
+            Order Now
+          </a>
+        </div>
+
+        <!-- Right image -->
+        <img
+          src="images/nori-gazing.jpg"
+          alt="Pots of cat grass"
+          class="w-1/4 h-64 object-cover rounded-lg shadow-lg"
+        />
+      </div>
     </div>
-
-    <!-- Right image -->
-    <img
-      src="images/nori-gazing.jpg"
-      alt="Pots of cat grass"
-      class="w-full md:w-1/4 h-64 object-cover rounded-lg shadow-lg"
-    />
-
-  </div>
-</section>
+  </section>
 
 <!-- Features (as a colored banner, no heading) -->
 <section id="features" class="py-16 px-4 bg-green-100">
@@ -271,7 +262,7 @@
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
           <img src="images/cat-grass-7.jpg" alt="Seventh image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
-        <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
+        <div class="swiper-slide p-2 cursor-grab active:cursor-largegrabbing">
           <img src="images/cat-grass-8.jpg" alt="Eighth image" class="rounded-lg shadow-md w-full h-64 object-cover transform hover:scale-105 transition duration-300"/>
         </div>
         <div class="swiper-slide p-2 cursor-grab active:cursor-grabbing">
