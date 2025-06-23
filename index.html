@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nori's Nibbles of Saranap</title>
+  
+  <!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YDHQ4QD341"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YDHQ4QD341');
+</script>
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Swiper CSS & JS -->
@@ -23,7 +35,7 @@
   <!-- Header -->
   <!-- <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
     <div class="container mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-white">Nori’s Nibbles</h1>
+      <h1 class="text-2xl font-bold text-white">Nori's Nibbles</h1>
       <nav>
         <ul class="flex space-x-4 text-sm font-medium">
           <li><a href="#hero"           class="text-white hover:text-green-200">Home</a></li>
@@ -39,7 +51,7 @@
   </header> -->
   <header class="sticky top-0 z-50 bg-green-800 bg-opacity-90 backdrop-blur-md py-4 shadow">
     <div class="container mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-white">Nori’s Nibbles of Saranap</h1>
+      <h1 class="text-2xl font-bold text-white">Nori's Nibbles of Saranap</h1>
       <nav>
         <ul class="flex space-x-4 text-sm font-medium">
           <!-- Home (always back to your main one-pager) -->
@@ -120,6 +132,7 @@
       </p>
       <a
         href="#order"
+        onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Order Button' });"
         class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-8 rounded-full transition"
       >
         Order Now
@@ -283,7 +296,7 @@
       <h2 class="text-3xl font-semibold mb-8">What Customers Say</h2>
       <div class="space-y-8">
         <!--
-        <blockquote class="italic text-gray-700">“My kitty went nuts for this grass—no more hairballs!”</blockquote>
+        <blockquote class="italic text-gray-700">"My kitty went nuts for this grass—no more hairballs!"</blockquote>
         <p class="font-semibold">— @whiskersandme</p>
         -->
         <blockquote class="italic text-gray-700">As soon as I put it down, my cat went wild—thanks!</blockquote>
@@ -317,8 +330,9 @@
   <section id="order" class="py-16 px-4">
     <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
       <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
-      <p class="mb-6">Select your quantity and we’ll deliver to your door.</p>
+      <p class="mb-6">Select your quantity and we'll deliver to your door.</p>
       <a href="mailto:igorgeyn@gmail.com?subject=Cat%20Grass%20Order"
+         onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Order Section Email Button' });"
          class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">
         Email Your Order
       </a>
@@ -344,7 +358,7 @@
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-600 text-sm">
     <div class="space-y-2">
-      <p>&copy; 2025 Nori’s Nibbles</p>
+      <p>&copy; 2025 Nori's Nibbles</p>
       <nav class="space-x-4">
         <a href="#hero" class="underline hover:text-green-700">Home</a>
         <a href="#about" class="underline hover:text-green-700">About</a>
