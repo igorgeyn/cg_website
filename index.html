@@ -165,16 +165,16 @@
 </section>
 
 <!-- About & Mission -->
-<section id="about" class="py-16 px-4 bg-gray-50">
+<section id="about" class="py-8 px-4 bg-gray-50">
   <!-- Centered heading -->
-  <div class="max-w-5xl mx-auto text-center mb-8">
-    <h2 class="text-3xl font-semibold">Our Story</h2>
+  <div class="max-w-5xl mx-auto text-center mb-4">
+    <h2 class="text-2xl font-semibold">Our Story</h2>
   </div>
 
   <!-- Three-column layout: left text, center image, right text -->
-  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_11rem_minmax(0,1fr)] gap-5 items-start">
     <!-- Left Text Column -->
-    <div class="space-y-6">
+    <div class="space-y-2.5 text-[13px] leading-[1.45]">
       <p>
         Hello, I'm Igor! I'm a lifelong Bay Area dweller—not counting a couple journeys to southern California and Washington, DC. My family has been in Contra Costa County since 2015.</p>
         <p>
@@ -191,16 +191,16 @@
     </div>
 
     <!-- Center Image Column -->
-    <div class="flex items-center justify-center">
+    <div class="flex items-start justify-center md:pt-1">
       <img
         src="images/cat-grass-11.jpg"
         alt="Grower tending grass"
-        class="rounded-lg shadow-lg object-cover w-full max-w-xs h-auto"
+        class="rounded-lg shadow-md object-cover w-full max-w-44 h-auto"
       />
     </div>
 
     <!-- Right Text Column -->
-    <div class="space-y-6">
+    <div class="space-y-2.5 text-[13px] leading-[1.45]">
       <p>
         The green stuff grew like gangbusters, the cats were back in their happy place, and my wife and I were able to breathe a
         little easier. <strong>Nori's Nibbles—named after our beloved little black Bombay cat, Nori—is our answer to the
@@ -213,13 +213,13 @@
     </div>
 
     <!-- Mission & Values (spans all 3 columns) -->
-    <div class="md:col-span-3 mt-12 flex justify-center">
-      <div class="max-w-md text-center space-y-4">
-        <h2 class="text-3xl font-semibold">Mission &amp; Values</h2>
-        <ul class="list-disc list-inside space-y-2 text-gray-700">
-          <li>100% pesticide-free, small-batch farming</li>
-          <li>Eco-friendly packaging &amp; local delivery</li>
-          <li>Commitment to happy, healthy cats</li>
+    <div class="md:col-span-3 mt-4 flex justify-center">
+      <div class="max-w-3xl text-center space-y-2">
+        <h2 class="text-xl font-semibold">Mission &amp; Values</h2>
+        <ul class="flex flex-wrap justify-center gap-2 text-xs text-gray-700">
+          <li class="bg-white border border-gray-200 rounded-full px-3 py-1">100% pesticide-free, small-batch farming</li>
+          <li class="bg-white border border-gray-200 rounded-full px-3 py-1">Eco-friendly packaging &amp; local delivery</li>
+          <li class="bg-white border border-gray-200 rounded-full px-3 py-1">Commitment to happy, healthy cats</li>
         </ul>
       </div>
     </div>
