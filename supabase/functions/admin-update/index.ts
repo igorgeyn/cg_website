@@ -9,6 +9,17 @@ const orderStatuses = new Set(["received", "confirmed", "growing", "ready", "sch
 const paymentStatuses = new Set(["unpaid", "awaiting_confirmation", "paid"]);
 const windows = new Set(["8_11", "11_2", "2_5", "5_8", null]);
 
+function projectKeySet(variable: "SUPABASE_SECRET_KEYS" | "SUPABASE_PUBLISHABLE_KEYS", legacyVariable: "SUPABASE_SERVICE_ROLE_KEY" | "SUPABASE_ANON_KEY") {
+  const modernKeys = Deno.env.get(variable);
+  if (modernKeys) {
+    const key = JSON.parse(modernKeys).default;
+    if (key) return key;
+  }
+  const legacyKey = Deno.env.get(legacyVariable);
+  if (!legacyKey) throw new Error(`Supabase key is unavailable: ${variable}`);
+  return legacyKey;
+}
+
 function corsHeaders(origin: string | null) {
   const allowed = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
   return {
@@ -61,7 +72,7 @@ Deno.serve(async (request) => {
     const token = authorization.replace(/^Bearer\s+/i, "");
     if (!token) throw new Error("Sign-in required");
 
-    const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+    const admin = createClient(Deno.env.get("SUPABASE_URL")!, projectKeySet("SUPABASE_SECRET_KEYS", "SUPABASE_SERVICE_ROLE_KEY"));
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || userData.user?.email?.toLowerCase() !== adminEmail) throw new Error("Not authorized");
 
@@ -122,7 +133,7 @@ Deno.serve(async (request) => {
     }
 
     if (body.action === "new_batch") {
-      const authenticated = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_ANON_KEY")!, { global: { headers: { Authorization: `Bearer ${token}` } } });
+      const authenticated = createClient(Deno.env.get("SUPABASE_URL")!, projectKeySet("SUPABASE_PUBLISHABLE_KEYS", "SUPABASE_ANON_KEY"), { global: { headers: { Authorization: `Bearer ${token}` } } });
       const { data, error } = await authenticated.rpc("start_new_batch");
       if (error) throw error;
       const { data: subscribers, error: subscribersError } = await admin.from("batch_subscribers").select("email, unsubscribe_token").eq("is_active", true);

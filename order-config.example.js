@@ -2,9 +2,9 @@
 // order-config.js is intentionally ignored by Git so local configuration and
 // deployment-specific values are not committed accidentally.
 window.NORIS_NIBBLES_CONFIG = {
-  apiBaseUrl: "",
-  supabaseUrl: "",
-  supabasePublishableKey: "",
+  apiBaseUrl: "https://PROJECT_REF.supabase.co/functions/v1",
+  supabaseUrl: "https://PROJECT_REF.supabase.co",
+  supabasePublishableKey: "YOUR_PUBLIC_PUBLISHABLE_KEY",
   turnstileSiteKey: "",
   venmoUsername: "Igor-Geyn",
   inquiryEmail: "igorgeyn@gmail.com",

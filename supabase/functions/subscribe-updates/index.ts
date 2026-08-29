@@ -2,6 +2,17 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const allowedOrigins = (Deno.env.get("ALLOWED_ORIGINS") || "https://igorgeyn.github.io").split(",").map((origin) => origin.trim());
 
+function projectSecretKey() {
+  const modernKeys = Deno.env.get("SUPABASE_SECRET_KEYS");
+  if (modernKeys) {
+    const key = JSON.parse(modernKeys).default;
+    if (key) return key;
+  }
+  const legacyKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!legacyKey) throw new Error("Supabase server key is unavailable");
+  return legacyKey;
+}
+
 function corsHeaders(origin: string | null) {
   const allowed = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
   return { "Access-Control-Allow-Origin": allowed, "Access-Control-Allow-Headers": "content-type", "Access-Control-Allow-Methods": "POST, OPTIONS", "Vary": "Origin" };
@@ -51,7 +62,7 @@ Deno.serve(async (request) => {
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase().slice(0, 254) : "";
     if (!/^\S+@\S+\.\S+$/.test(email)) throw new Error("Please enter a valid email address");
     await verifyTurnstile(typeof body.turnstile_token === "string" ? body.turnstile_token : "", request);
-    const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+    const supabase = createClient(Deno.env.get("SUPABASE_URL")!, projectSecretKey());
     const { data, error } = await supabase.from("batch_subscribers").upsert({ email, is_active: true }, { onConflict: "email" }).select("unsubscribe_token").single();
     if (error || !data) throw error || new Error("Subscription could not be saved");
     await sendConfirmation(email, data.unsubscribe_token);

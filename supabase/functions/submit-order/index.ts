@@ -14,6 +14,17 @@ const allowedOrigins = (Deno.env.get("ALLOWED_ORIGINS") || "https://igorgeyn.git
   .split(",")
   .map((origin) => origin.trim());
 
+function projectSecretKey() {
+  const modernKeys = Deno.env.get("SUPABASE_SECRET_KEYS");
+  if (modernKeys) {
+    const key = JSON.parse(modernKeys).default;
+    if (key) return key;
+  }
+  const legacyKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!legacyKey) throw new Error("Supabase server key is unavailable");
+  return legacyKey;
+}
+
 type SubmittedItem = { sku: keyof typeof products; quantity: number };
 
 function corsHeaders(origin: string | null) {
@@ -120,7 +131,7 @@ Deno.serve(async (request) => {
     const totalCents = subtotalCents + deliveryFeeCents;
     const requestFingerprint = await fingerprint(request);
 
-    const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+    const supabase = createClient(Deno.env.get("SUPABASE_URL")!, projectSecretKey());
     const cutoff = new Date(Date.now() - 15 * 60 * 1000).toISOString();
     const { count } = await supabase.from("orders").select("id", { count: "exact", head: true }).eq("request_fingerprint", requestFingerprint).gte("created_at", cutoff);
     if ((count || 0) >= 3) return new Response(JSON.stringify({ error: "Too many recent submissions. Please wait and try again." }), { status: 429, headers });
@@ -185,7 +196,7 @@ Deno.serve(async (request) => {
   } catch (error) {
     console.error(error);
     if (cleanupOrderId) {
-      const cleanupClient = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+      const cleanupClient = createClient(Deno.env.get("SUPABASE_URL")!, projectSecretKey());
       const { error: cleanupError } = await cleanupClient.from("orders").delete().eq("id", cleanupOrderId);
       if (cleanupError) console.error("Could not clean up partial order", cleanupError);
     }

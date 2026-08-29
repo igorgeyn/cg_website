@@ -4,6 +4,17 @@ const allowedOrigins = (Deno.env.get("ALLOWED_ORIGINS") || "https://igorgeyn.git
   .split(",")
   .map((origin) => origin.trim());
 
+function projectSecretKey() {
+  const modernKeys = Deno.env.get("SUPABASE_SECRET_KEYS");
+  if (modernKeys) {
+    const key = JSON.parse(modernKeys).default;
+    if (key) return key;
+  }
+  const legacyKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!legacyKey) throw new Error("Supabase server key is unavailable");
+  return legacyKey;
+}
+
 function corsHeaders(origin: string | null) {
   const allowed = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
   return {
@@ -23,7 +34,7 @@ Deno.serve(async (request) => {
   try {
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+      projectSecretKey(),
     );
     const { data: batch, error: batchError } = await supabase
       .from("batches")
