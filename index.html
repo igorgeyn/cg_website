@@ -24,7 +24,8 @@
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="order.css"/>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; }
@@ -307,7 +308,7 @@
         </details>
         <details class="border rounded-lg p-4">
           <summary class="font-medium cursor-pointer">How does this compare to the stuff in the store?</summary>
-          <p class="mt-2 text-gray-600">From what I've been able to gather (very unscientific, literally just my experienc shopping for my cat grass for my own cats), the grass we grow at Nori's Nibbles is (a) significantly cheaper and (b) of, at a minimum, equal quality--and, in many cases, our stuff is better. Most pet stores will sell you a tiny, 2-3 inch square pot with grass of varying quality for upwards of 8-10 dollars. We sell grass of the same or better quality, in a patch of 6 by 6 inches, for $5 flat. </p>
+          <p class="mt-2 text-gray-600">From what I've been able to gather (very unscientific, literally just my experience shopping for cat grass for my own cats), the grass we grow at Nori's Nibbles is significantly less expensive and, at a minimum, equal in quality. Many pet stores sell a tiny 2–3 inch pot of grass for $8–10. Our fresh, locally grown options start at $6 for a 4×4-inch chunk.</p>
         </details>
         <details class="border rounded-lg p-4">
           <summary class="font-medium cursor-pointer">Do you offer a guarantee?</summary>
@@ -317,16 +318,278 @@
     </div>
   </section>
 
-  <!-- Order CTA -->
-  <section id="order" class="py-16 px-4">
-    <div class="max-w-md mx-auto bg-green-100 rounded-lg p-8 text-center">
-      <h2 class="text-2xl font-semibold mb-4">Ready to Order?</h2>
-      <p class="mb-6">Select your quantity and we'll deliver to your door.</p>
-      <a href="mailto:igorgeyn@gmail.com?subject=Cat%20Grass%20Order"
-         onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Order Section Email Button' });"
-         class="inline-block bg-green-500 hover:bg-green-400 text-white font-semibold py-3 px-6 rounded transition">
-        Email Your Order
-      </a>
+  <!-- Made-to-order tracker and order form -->
+  <section id="order" class="order-experience" aria-labelledby="order-heading">
+    <div class="order-shell">
+      <div class="order-intro">
+        <span class="order-kicker">Grown locally · Delivered fresh</span>
+        <h2 id="order-heading">Reserve your cat’s next fresh patch.</h2>
+        <p>
+          To ensure maximum quality and freshness, Nori’s Nibbles cat grass is grown to order.
+          We collect enough orders to start a fresh batch, then begin growing as quickly as possible.
+          Once growing begins, the grass is typically ready for delivery within 10 days. The wait before
+          growing begins depends on how quickly the batch fills.
+        </p>
+        <p class="mt-3 font-semibold text-green-800">Check the tracker below to see how close we are to the next fresh batch!</p>
+      </div>
+
+      <div class="batch-tracker" aria-live="polite">
+        <div class="tracker-topline">
+          <h3 class="tracker-title">Next Fresh Batch</h3>
+          <span id="tracker-state" class="tracker-state">Gathering orders</span>
+        </div>
+        <div class="tracker-readout">
+          <span id="tracker-percentage" class="tracker-percentage">0%</span>
+          <span id="tracker-units" class="tracker-units">0 of 20 batch units reserved</span>
+        </div>
+        <div class="tracker-track" role="progressbar" aria-label="Next fresh batch progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="tracker-fill" class="tracker-fill"></div>
+        </div>
+        <p id="tracker-caption" class="tracker-caption">20 batch units to go. Every order moves the next fresh batch closer.</p>
+      </div>
+
+      <div class="order-launcher">
+        <div>
+          <span class="order-launcher-kicker">Ready for the next batch?</span>
+          <h3>Build your order in four quick steps.</h3>
+          <p>Your choices and total stay visible as you go.</p>
+        </div>
+        <button id="open-order-modal" class="open-order-button" type="button">Start your order</button>
+      </div>
+
+      <div id="order-modal" class="order-modal" hidden>
+        <div class="order-modal-backdrop" data-close-order-modal></div>
+        <div class="order-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="order-modal-title" tabindex="-1">
+          <header class="order-modal-header">
+            <div>
+              <span id="order-step-label" class="order-modal-eyebrow">Step 1 of 4</span>
+              <h2 id="order-modal-title">Build your order</h2>
+            </div>
+            <button class="order-modal-close" type="button" data-close-order-modal aria-label="Close order form">&times;</button>
+          </header>
+
+          <ol class="order-progress" aria-label="Order progress">
+            <li class="is-active" data-step-indicator="1"><span></span><strong>Grass</strong></li>
+            <li data-step-indicator="2"><span></span><strong>Delivery</strong></li>
+            <li data-step-indicator="3"><span></span><strong>Timing</strong></li>
+            <li data-step-indicator="4"><span></span><strong>Review</strong></li>
+          </ol>
+
+          <div class="order-layout">
+            <div class="order-panel">
+          <form id="noris-order-form" novalidate>
+            <section class="form-section wizard-step is-active" data-order-step="1" aria-labelledby="choose-grass-heading">
+              <div class="form-section-heading">
+                <span class="form-step">1</span>
+                <h3 id="choose-grass-heading">Choose your grass</h3>
+              </div>
+              <div class="product-picker">
+                <article class="product-option" data-product-card="small">
+                  <div class="product-name">Small Chunk</div>
+                  <div class="product-size">4×4 inches · 1 batch unit</div>
+                  <div class="product-price">$6</div>
+                  <div class="product-unit-note">Great for one cat</div>
+                  <div class="quantity-control" aria-label="Small Chunk quantity">
+                    <button class="quantity-button" type="button" data-quantity-action="decrease" data-product="small" aria-label="Remove one Small Chunk">−</button>
+                    <span class="quantity-value" data-quantity-value="small" aria-live="polite">0</span>
+                    <button class="quantity-button" type="button" data-quantity-action="increase" data-product="small" aria-label="Add one Small Chunk">+</button>
+                  </div>
+                </article>
+                <article class="product-option" data-product-card="large">
+                  <div class="product-name">Large Chunk</div>
+                  <div class="product-size">6×6 inches · 2 batch units</div>
+                  <div class="product-price">$8</div>
+                  <div class="product-unit-note">Popular with multi-cat homes</div>
+                  <div class="quantity-control" aria-label="Large Chunk quantity">
+                    <button class="quantity-button" type="button" data-quantity-action="decrease" data-product="large" aria-label="Remove one Large Chunk">−</button>
+                    <span class="quantity-value" data-quantity-value="large" aria-live="polite">0</span>
+                    <button class="quantity-button" type="button" data-quantity-action="increase" data-product="large" aria-label="Add one Large Chunk">+</button>
+                  </div>
+                </article>
+                <article class="product-option" data-product-card="xl">
+                  <div class="product-name">XL Tray</div>
+                  <div class="product-size">Full tray · 8 batch units</div>
+                  <div class="product-price">$15</div>
+                  <div class="product-unit-note">Delivery-fee waiver eligible</div>
+                  <div class="quantity-control" aria-label="XL Tray quantity">
+                    <button class="quantity-button" type="button" data-quantity-action="decrease" data-product="xl" aria-label="Remove one XL Tray">−</button>
+                    <span class="quantity-value" data-quantity-value="xl" aria-live="polite">0</span>
+                    <button class="quantity-button" type="button" data-quantity-action="increase" data-product="xl" aria-label="Add one XL Tray">+</button>
+                  </div>
+                </article>
+              </div>
+              <p class="field-help mt-3">Prices include tax. There is no minimum order.</p>
+            </section>
+
+            <section class="form-section wizard-step" data-order-step="2" aria-labelledby="contact-heading" hidden>
+              <div class="form-section-heading">
+                <span class="form-step">2</span>
+                <h3 id="contact-heading">Contact and delivery</h3>
+              </div>
+              <div class="form-grid">
+                <div class="form-field full">
+                  <label for="full-name">Full name</label>
+                  <input id="full-name" name="full_name" type="text" autocomplete="name" required/>
+                </div>
+                <div class="form-field">
+                  <label for="order-email">Email</label>
+                  <input id="order-email" name="email" type="email" autocomplete="email" required/>
+                </div>
+                <div class="form-field">
+                  <label for="order-phone">Mobile number</label>
+                  <input id="order-phone" name="phone" type="tel" autocomplete="tel" required/>
+                </div>
+                <div class="form-field full">
+                  <label for="address-line-1">Street address</label>
+                  <input id="address-line-1" name="address_line1" type="text" autocomplete="address-line1" required/>
+                </div>
+                <div class="form-field full">
+                  <label for="address-line-2">Apartment, unit, or building <span class="font-normal text-gray-500">(optional)</span></label>
+                  <input id="address-line-2" name="address_line2" type="text" autocomplete="address-line2"/>
+                </div>
+                <div class="form-field">
+                  <label for="delivery-city">City</label>
+                  <select id="delivery-city" name="city" autocomplete="address-level2" required>
+                    <option value="">Select your city</option>
+                    <optgroup label="Free delivery">
+                      <option>Albany</option>
+                      <option>Berkeley</option>
+                      <option>Emeryville</option>
+                      <option>Lafayette</option>
+                      <option>Moraga</option>
+                      <option>Oakland</option>
+                      <option>Orinda</option>
+                      <option>Piedmont</option>
+                      <option>Pleasant Hill</option>
+                      <option>Walnut Creek</option>
+                    </optgroup>
+                    <optgroup label="$5 delivery · waived at 8 units">
+                      <option>Concord</option>
+                      <option>El Cerrito</option>
+                      <option>Kensington</option>
+                    </optgroup>
+                  </select>
+                  <p id="delivery-fee-note" class="delivery-fee-note">Choose a city to see delivery pricing.</p>
+                </div>
+                <div class="form-field">
+                  <label for="delivery-zip">ZIP code</label>
+                  <input id="delivery-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" maxlength="5" required/>
+                </div>
+              </div>
+
+              <div class="field-label mt-5 mb-2">Handoff preference</div>
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="radio" name="delivery_method" value="contactless" checked/>
+                  <span><strong>Contactless drop-off</strong><span>Default. We’ll leave the grass safely at your door.</span></span>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="delivery_method" value="in_person"/>
+                  <span><strong>Request in-person</strong><span>If no one is available, we’ll complete a doorstep delivery.</span></span>
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section wizard-step" data-order-step="3" aria-labelledby="timing-heading" hidden>
+              <div class="form-section-heading">
+                <span class="form-step">3</span>
+                <h3 id="timing-heading">Preferred delivery windows</h3>
+              </div>
+              <p class="field-help mb-3">
+                Select every window that usually works. These are preferences, not appointments. Final timing is announced after the crop is ready;
+                if the proposed delivery falls outside your selections, we’ll contact you first.
+              </p>
+              <div class="availability-wrap">
+                <table class="availability-grid">
+                  <thead>
+                    <tr><th>Day</th><th>8–11 a.m.</th><th>11 a.m.–2 p.m.</th><th>2–5 p.m.</th><th>5–8 p.m.</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Monday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="mon_8_11" aria-label="Monday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="mon_11_2" aria-label="Monday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="mon_2_5" aria-label="Monday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="mon_5_8" aria-label="Monday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Tuesday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="tue_8_11" aria-label="Tuesday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="tue_11_2" aria-label="Tuesday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="tue_2_5" aria-label="Tuesday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="tue_5_8" aria-label="Tuesday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Wednesday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="wed_8_11" aria-label="Wednesday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="wed_11_2" aria-label="Wednesday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="wed_2_5" aria-label="Wednesday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="wed_5_8" aria-label="Wednesday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Thursday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="thu_8_11" aria-label="Thursday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="thu_11_2" aria-label="Thursday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="thu_2_5" aria-label="Thursday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="thu_5_8" aria-label="Thursday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Friday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="fri_8_11" aria-label="Friday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="fri_11_2" aria-label="Friday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="fri_2_5" aria-label="Friday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="fri_5_8" aria-label="Friday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Saturday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sat_8_11" aria-label="Saturday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sat_11_2" aria-label="Saturday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sat_2_5" aria-label="Saturday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sat_5_8" aria-label="Saturday 5 to 8 p.m."><span></span></label></td></tr>
+                    <tr><td>Sunday</td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sun_8_11" aria-label="Sunday 8 to 11 a.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sun_11_2" aria-label="Sunday 11 a.m. to 2 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sun_2_5" aria-label="Sunday 2 to 5 p.m."><span></span></label></td><td><label class="slot-check"><input type="checkbox" name="delivery_slots" value="sun_5_8" aria-label="Sunday 5 to 8 p.m."><span></span></label></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <label class="no-preference"><input id="no-preference" type="checkbox"/> No preference—any of these windows generally works</label>
+              <div class="form-field full mt-4">
+                <label for="delivery-notes">Delivery instructions <span class="font-normal text-gray-500">(optional)</span></label>
+                <textarea id="delivery-notes" name="delivery_notes" placeholder="Gate code, where to leave the order, pets at the property, or anything else we should know"></textarea>
+              </div>
+            </section>
+
+            <section class="form-section wizard-step" data-order-step="4" aria-labelledby="payment-heading" hidden>
+              <div class="form-section-heading">
+                <span class="form-step">4</span>
+                <h3 id="payment-heading">Payment</h3>
+              </div>
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="radio" name="payment_method" value="venmo_now" checked/>
+                  <span><strong>Pay now with Venmo</strong><span>After ordering, we’ll show the exact total and payment instructions for @Igor-Geyn.</span></span>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="payment_method" value="pay_on_delivery"/>
+                  <span><strong>Pay upon delivery</strong><span>Your order counts toward the batch immediately; payment can wait.</span></span>
+                </label>
+              </div>
+              <p class="field-help mt-3">Prepaid orders are firm orders. We grow to order and commit to delivering every paid order.</p>
+            </section>
+
+            <section class="form-section wizard-step wizard-step-followup" data-order-step="4" aria-label="Email preferences" hidden>
+              <label class="marketing-optin">
+                <input type="checkbox" name="marketing_opt_in" value="yes"/>
+                <span>Email me occasional special offers, discounts, and batch announcements. This is optional and separate from essential order updates.</span>
+              </label>
+              <div id="turnstile-container" class="mt-4"></div>
+            </section>
+
+            <div id="order-form-message" class="form-message" tabindex="-1" role="alert"></div>
+            <div class="order-modal-actions">
+              <button id="order-back-button" class="order-back-button" type="button" hidden>Back</button>
+              <span class="order-step-count" aria-hidden="true"><span id="order-step-current">1</span>/4</span>
+              <span class="mobile-order-total">Total <strong id="mobile-summary-total">$0.00</strong></span>
+              <button id="order-next-button" class="order-next-button" type="button">Continue</button>
+              <button id="submit-order-button" class="submit-order" type="submit" hidden>Place order</button>
+            </div>
+          </form>
+
+          <div id="order-success" class="success-card" tabindex="-1">
+            <div class="text-4xl mb-3" aria-hidden="true">🌱</div>
+            <h3>Your order is in!</h3>
+            <p class="mt-3 text-gray-600">Order <strong id="success-order-number"></strong> has been added to the Next Fresh Batch tracker.</p>
+            <div id="success-venmo" hidden>
+              <p class="mt-4 text-gray-700">Please send <strong id="success-total"></strong> to <strong>@Igor-Geyn</strong> and put your order number in the payment note.</p>
+              <a id="venmo-payment-link" class="venmo-button" href="https://venmo.com/u/Igor-Geyn" target="_blank" rel="noopener">Open Venmo</a>
+            </div>
+            <p class="mt-4 text-sm text-gray-500">A confirmation and future batch updates are on their way to your email.</p>
+          </div>
+        </div>
+
+        <aside class="order-summary" aria-label="Order summary">
+          <h3>Your order</h3>
+          <p id="summary-empty" class="summary-empty">Use the + buttons to add fresh cat grass.</p>
+          <div id="summary-items"></div>
+          <div class="summary-divider"></div>
+          <div class="summary-line"><span>Items</span><strong id="summary-subtotal">$0.00</strong></div>
+          <div class="summary-line"><span>Delivery</span><strong id="summary-delivery">Free</strong></div>
+          <div class="summary-divider"></div>
+          <div class="summary-total"><span>Total</span><span id="summary-total">$0.00</span></div>
+          <div id="summary-units" class="summary-unit-badge">0 of 20 batch units added by this order</div>
+          <p class="field-help mt-3 text-center">Final delivery timing is announced after the crop is ready.</p>
+        </aside>
+          </div>
+        </div>
+      </div>
+
+      <p class="order-help">
+        Curious about timing, delivery, or a larger order? Email us at
+        <a data-inquiry-link href="mailto:igorgeyn@gmail.com">igorgeyn@gmail.com</a>.
+      </p>
     </div>
   </section>
 
@@ -349,7 +612,7 @@
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-600 text-sm">
     <div class="space-y-2">
-      <p>&copy; 2025 Nori's Nibbles</p>
+      <p>&copy; 2026 Nori's Nibbles</p>
       <nav class="space-x-4">
         <a href="#hero" class="underline hover:text-green-700">Home</a>
         <a href="#about" class="underline hover:text-green-700">About</a>
@@ -376,5 +639,7 @@
       }
     });
   </script>
+  <script src="order-config.js"></script>
+  <script src="order.js"></script>
 </body>
 </html>

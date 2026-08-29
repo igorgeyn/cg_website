@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>Nori's Nibbles · Order Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+  <main class="admin-shell">
+    <section id="admin-login" class="admin-card login-card">
+      <div aria-hidden="true" style="font-size:2.5rem">🌱</div>
+      <h2>Nori's Nibbles admin</h2>
+      <p>Receive a one-time sign-in link at the approved administrator address.</p>
+      <input id="admin-email" class="admin-input" type="email" autocomplete="email" value="igorgeyn@gmail.com" aria-label="Admin email"/>
+      <button id="admin-login-button" class="admin-button" style="width:100%;margin-top:.75rem">Email sign-in link</button>
+      <div id="login-message" class="admin-message" role="alert"></div>
+    </section>
+
+    <section id="admin-dashboard" class="hidden">
+      <header class="admin-header">
+        <div><h1>Order desk</h1><p>Batch progress, delivery groups, and fulfillment.</p></div>
+        <div><a class="admin-link" href="index.html#order">View order page</a> · <button id="admin-signout" class="admin-button secondary">Sign out</button></div>
+      </header>
+
+      <div class="admin-grid">
+        <div class="metric"><div class="metric-label">Orders</div><div id="metric-orders" class="metric-value">0</div></div>
+        <div class="metric"><div class="metric-label">Batch units</div><div id="metric-units" class="metric-value">0</div></div>
+        <div class="metric"><div class="metric-label">Order value</div><div id="metric-value" class="metric-value">$0</div></div>
+        <div class="metric"><div class="metric-label">Paid</div><div id="metric-paid" class="metric-value">0</div></div>
+      </div>
+
+      <div class="admin-columns">
+        <div class="admin-stack">
+          <section class="admin-card">
+            <div class="section-title"><h2>Active batch</h2><span id="batch-percent">0%</span></div>
+            <div class="batch-progress"><div id="batch-progress-fill" style="width:0%"></div></div>
+            <p id="batch-progress-copy" class="order-meta">Loading…</p>
+            <div class="batch-actions">
+              <select id="batch-status" class="admin-select" aria-label="Batch status">
+                <option value="collecting">Gathering orders</option>
+                <option value="goal_reached">Goal reached</option>
+                <option value="growing">Growing</option>
+                <option value="ready">Ready</option>
+                <option value="delivery_planning">Delivery planning</option>
+                <option value="complete">Complete</option>
+              </select>
+              <button id="save-batch" class="admin-button">Save batch status</button>
+              <button id="new-batch" class="admin-button secondary">Close and start new batch</button>
+            </div>
+          </section>
+
+          <section class="admin-card">
+            <div class="section-title"><h2>Suggested delivery groups</h2></div>
+            <p class="order-meta">Grouped by city and the most commonly selected three-hour window. Review before assigning customers.</p>
+            <div id="route-suggestions" class="route-list" style="margin-top:1rem"></div>
+          </section>
+        </div>
+
+        <section class="admin-card">
+          <div class="section-title"><h2>Orders</h2><button id="refresh-orders" class="admin-button secondary">Refresh</button></div>
+          <div class="orders-toolbar">
+            <input id="order-search" class="admin-input" type="search" placeholder="Search name, order, city, or ZIP"/>
+          </div>
+          <div id="orders-list" class="orders-list"></div>
+        </section>
+      </div>
+      <div id="dashboard-message" class="admin-message" role="alert"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="order-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
