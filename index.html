@@ -466,6 +466,11 @@
                 <span>Email me occasional special offers, discounts, and batch announcements. This is optional and separate from essential order updates.</span>
               </label>
               <div id="turnstile-container" class="mt-4"></div>
+              <div id="order-verification-status" class="order-verification-status" role="status" aria-live="polite" hidden>
+                <span class="order-verification-icon" aria-hidden="true"></span>
+                <span id="order-verification-text"></span>
+                <button id="order-verification-retry" type="button" hidden>Retry check</button>
+              </div>
             </section>
 
             <div id="order-form-message" class="form-message" tabindex="-1" role="alert"></div>

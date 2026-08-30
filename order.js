@@ -29,6 +29,9 @@
   const summaryUnits = byId("summary-units");
   const formMessage = byId("order-form-message");
   const submitButton = byId("submit-order-button");
+  const verificationStatus = byId("order-verification-status");
+  const verificationText = byId("order-verification-text");
+  const verificationRetry = byId("order-verification-retry");
   const citySelect = byId("delivery-city");
   const noPreference = byId("no-preference");
   const slotInputs = [...document.querySelectorAll("input[name='delivery_slots']")];
@@ -45,6 +48,10 @@
   let currentStep = 1;
   let lastFocusedElement = null;
   let orderTurnstileRendered = false;
+  let orderTurnstileWidgetId = null;
+  let orderTurnstileToken = "";
+  let orderVerificationState = config.turnstileSiteKey ? "pending" : "ready";
+  let orderIsSubmitting = false;
 
   function totals() {
     let subtotal = 0;
@@ -115,14 +122,87 @@
     formMessage.className = "form-message";
   }
 
+  function setOrderVerificationState(state) {
+    orderVerificationState = state;
+    if (!config.turnstileSiteKey) {
+      verificationStatus.hidden = true;
+      return;
+    }
+
+    const copy = {
+      pending: "Securely checking your order…",
+      interactive: "Please complete the quick verification above.",
+      ready: "Secure check complete. Your order is ready to place.",
+      error: "The secure check didn’t finish. Please retry it.",
+    };
+    verificationStatus.hidden = false;
+    verificationStatus.dataset.state = state;
+    verificationText.textContent = copy[state];
+    verificationRetry.hidden = state !== "error";
+    if (!orderIsSubmitting) {
+      submitButton.disabled = state !== "ready";
+      submitButton.textContent = state === "pending" ? "Checking…" : "Place order";
+    }
+  }
+
   function renderOrderTurnstile() {
-    if (orderTurnstileRendered || !config.turnstileSiteKey || !window.turnstile) return;
-    window.turnstile.render("#turnstile-container", {
+    if (!config.turnstileSiteKey) {
+      setOrderVerificationState("ready");
+      return;
+    }
+    setOrderVerificationState(orderTurnstileToken ? "ready" : "pending");
+    if (orderTurnstileRendered || !window.turnstile) return;
+    orderTurnstileWidgetId = window.turnstile.render("#turnstile-container", {
       sitekey: config.turnstileSiteKey,
       theme: "light",
+      size: "flexible",
       appearance: "interaction-only",
+      callback(token) {
+        orderTurnstileToken = token;
+        setOrderVerificationState("ready");
+      },
+      "before-interactive-callback"() {
+        setOrderVerificationState("interactive");
+      },
+      "after-interactive-callback"() {
+        if (!orderTurnstileToken) setOrderVerificationState("pending");
+      },
+      "expired-callback"() {
+        orderTurnstileToken = "";
+        setOrderVerificationState("pending");
+      },
+      "timeout-callback"() {
+        orderTurnstileToken = "";
+        setOrderVerificationState("error");
+      },
+      "error-callback"(errorCode) {
+        console.warn("Order security check failed:", errorCode);
+        orderTurnstileToken = "";
+        setOrderVerificationState("error");
+        return true;
+      },
+      "unsupported-callback"() {
+        orderTurnstileToken = "";
+        setOrderVerificationState("error");
+      },
     });
     orderTurnstileRendered = true;
+  }
+
+  verificationRetry.addEventListener("click", () => {
+    refreshOrderTurnstile();
+    if (!window.turnstile || orderTurnstileWidgetId === null) {
+      orderTurnstileRendered = false;
+      renderOrderTurnstile();
+    }
+  });
+
+  function refreshOrderTurnstile() {
+    orderTurnstileToken = "";
+    setOrderVerificationState("pending");
+    if (window.turnstile && orderTurnstileWidgetId !== null) {
+      window.turnstile.reset(orderTurnstileWidgetId);
+    }
   }
 
   function setStep(step, moveFocus = true) {
@@ -284,6 +364,9 @@
     script.async = true;
     script.defer = true;
     script.dataset.turnstileScript = "true";
+    script.addEventListener("error", () => {
+      if (currentStep === 4) setOrderVerificationState("error");
+    });
     document.head.appendChild(script);
   }
 
@@ -320,7 +403,7 @@
       delivery_slots: selectedSlots(),
       delivery_notes: data.get("delivery_notes")?.trim(),
       marketing_opt_in: data.get("marketing_opt_in") === "yes",
-      turnstile_token: data.get("cf-turnstile-response") || "",
+      turnstile_token: orderTurnstileToken || data.get("cf-turnstile-response") || "",
     };
   }
 
@@ -341,7 +424,13 @@
       showMessage(`Online submission is being connected. For now, please email ${config.inquiryEmail || "orders@igorgeyn.com"}.`);
       return;
     }
+    if (config.turnstileSiteKey && orderVerificationState !== "ready") {
+      showMessage("Your order is still being securely checked. Please wait a moment.");
+      renderOrderTurnstile();
+      return;
+    }
 
+    orderIsSubmitting = true;
     submitButton.disabled = true;
     submitButton.textContent = "Placing order…";
     try {
@@ -351,7 +440,14 @@
         body: JSON.stringify(payload()),
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "We couldn't place the order.");
+      if (!response.ok) {
+        const errorMessage = result.error || "We couldn't place the order.";
+        if (/anti-spam|turnstile|security check/i.test(errorMessage)) {
+          refreshOrderTurnstile();
+          throw new Error("The secure check expired, so we’re refreshing it now. Please wait for the Place order button to become ready.");
+        }
+        throw new Error(errorMessage);
+      }
 
       form.hidden = true;
       document.querySelector(".order-summary").hidden = true;
@@ -372,8 +468,12 @@
     } catch (error) {
       showMessage(error.message || "Something went wrong. Please try again.");
     } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = "Place order";
+      orderIsSubmitting = false;
+      if (config.turnstileSiteKey) setOrderVerificationState(orderVerificationState);
+      else {
+        submitButton.disabled = false;
+        submitButton.textContent = "Place order";
+      }
     }
   });
 

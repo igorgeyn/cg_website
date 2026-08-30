@@ -778,6 +778,56 @@ body.order-modal-open {
 .form-message.is-error { background: #fff0ed; color: #8a2c1e; }
 .form-message.is-success { background: #eaf8e8; color: #1b5b3b; }
 
+.order-verification-status {
+  align-items: center;
+  background: #f3f7f2;
+  border-radius: 0.75rem;
+  color: var(--order-muted);
+  display: flex;
+  font-size: 0.78rem;
+  gap: 0.55rem;
+  line-height: 1.4;
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.8rem;
+}
+.order-verification-status[hidden] { display: none; }
+.order-verification-status[data-state="ready"] { background: #eaf8e8; color: #1b5b3b; }
+.order-verification-status[data-state="error"] { background: #fff0ed; color: #8a2c1e; }
+.order-verification-icon {
+  border: 2px solid #b7c5bb;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 0.9rem;
+  width: 0.9rem;
+}
+.order-verification-status[data-state="pending"] .order-verification-icon {
+  animation: order-verification-spin 750ms linear infinite;
+  border-right-color: var(--order-leaf);
+}
+.order-verification-status[data-state="interactive"] .order-verification-icon,
+.order-verification-status[data-state="error"] .order-verification-icon {
+  border-color: currentColor;
+}
+.order-verification-status[data-state="ready"] .order-verification-icon {
+  background: var(--order-leaf);
+  border-color: var(--order-leaf);
+  box-shadow: inset 0 0 0 0.2rem #eaf8e8;
+}
+.order-verification-status button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  margin-left: auto;
+  padding: 0;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+@keyframes order-verification-spin { to { transform: rotate(360deg); } }
+
 .order-help {
   background: #fff;
   border: 1px solid var(--order-border);
