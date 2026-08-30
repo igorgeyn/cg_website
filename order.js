@@ -335,7 +335,7 @@
     }
     if (!form.reportValidity()) return;
     if (!config.apiBaseUrl) {
-      showMessage(`Online submission is being connected. For now, please email ${config.inquiryEmail || "igorgeyn@gmail.com"}.`);
+      showMessage(`Online submission is being connected. For now, please email ${config.inquiryEmail || "orders@igorgeyn.com"}.`);
       return;
     }
 
@@ -406,7 +406,7 @@
   });
 
   document.querySelectorAll("[data-inquiry-link]").forEach((link) => {
-    const email = config.inquiryEmail || "igorgeyn@gmail.com";
+    const email = config.inquiryEmail || "orders@igorgeyn.com";
     link.href = `mailto:${email}?subject=${encodeURIComponent("Nori's Nibbles order question")}`;
     link.textContent = email;
   });

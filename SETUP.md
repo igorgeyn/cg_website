@@ -9,7 +9,7 @@ The repository contains the complete frontend and deployable service code, but n
 3. In Authentication → Users, invite `igorgeyn@gmail.com` so the admin magic-link flow has an existing user.
 4. Add this redirect URL to the authentication URL configuration:
    `https://igorgeyn.github.io/cg_website/admin.html`
-5. Deploy the five Edge Functions:
+5. Deploy the six Edge Functions:
 
    ```text
    supabase functions deploy batch-progress --no-verify-jwt
@@ -17,6 +17,7 @@ The repository contains the complete frontend and deployable service code, but n
    supabase functions deploy admin-update --no-verify-jwt
    supabase functions deploy subscribe-updates --no-verify-jwt
    supabase functions deploy unsubscribe-updates --no-verify-jwt
+   supabase functions deploy resend-inbound --no-verify-jwt
    ```
 
 `admin-update` still validates the signed-in administrator inside the function. The public functions validate allowed origins, input, prices, delivery fees, rate limits, and Turnstile tokens server-side.
@@ -27,6 +28,7 @@ The repository contains the complete frontend and deployable service code, but n
 2. Add a domain you own and add the supplied SPF/DKIM DNS records.
 3. Create a sending API key.
 4. Choose a sender such as `Nori's Nibbles <orders@example.com>`. Use an address that can receive replies.
+5. To forward inbound mail, enable receiving for the domain, create a full-access API key, and add an `email.received` webhook pointing to the deployed `resend-inbound` function.
 
 ## 3. Cloudflare Turnstile
 
@@ -43,6 +45,10 @@ ALLOWED_ORIGINS=https://igorgeyn.github.io
 ADMIN_EMAIL=igorgeyn@gmail.com
 FROM_EMAIL=Nori's Nibbles <orders@example.com>
 RESEND_API_KEY=...
+RESEND_INBOUND_API_KEY=...
+RESEND_WEBHOOK_SECRET=...
+INBOUND_EMAIL=orders@example.com
+INBOUND_FORWARD_TO=you@example.com
 TURNSTILE_SECRET_KEY=...
 RATE_LIMIT_SALT=use-a-long-random-value
 SITE_URL=https://igorgeyn.github.io/cg_website

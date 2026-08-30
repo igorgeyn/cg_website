@@ -5,7 +5,7 @@ window.NORIS_NIBBLES_CONFIG = {
   supabasePublishableKey: "sb_publishable_SsV1Eb6M8yxooUpXW_ZFTg_invPcD6C",
   turnstileSiteKey: "0x4AAAAAAEhMdn5ErUpDXUsI",
   venmoUsername: "Igor-Geyn",
-  inquiryEmail: "igorgeyn@gmail.com",
+  inquiryEmail: "orders@igorgeyn.com",
   adminEmail: "igorgeyn@gmail.com",
   trackerFallbackUnits: 0,
 };
