@@ -33,6 +33,9 @@
   const noPreference = byId("no-preference");
   const slotInputs = [...document.querySelectorAll("input[name='delivery_slots']")];
   const modal = byId("order-modal");
+  // Keep the fixed dialog out of the order section's stacking context so it
+  // can cover the sticky site header and the rest of the page on every device.
+  if (modal.parentElement !== document.body) document.body.appendChild(modal);
   const modalDialog = modal.querySelector(".order-modal-dialog");
   const openModalButton = byId("open-order-modal");
   const backButton = byId("order-back-button");
