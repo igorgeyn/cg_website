@@ -828,6 +828,18 @@ body.order-modal-open {
 
 @keyframes order-verification-spin { to { transform: rotate(360deg); } }
 
+.order-privacy-note {
+  color: var(--order-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  margin-top: 0.75rem;
+}
+.order-privacy-note a {
+  color: var(--order-leaf);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 .order-help {
   background: #fff;
   border: 1px solid var(--order-border);
