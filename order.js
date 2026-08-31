@@ -7,7 +7,7 @@
     large: { name: "Large 6×6", price: 8, units: 2 },
     xl: { name: "XL tray", price: 15, units: 8 },
   };
-  const feeCities = new Set(["Concord", "El Cerrito", "Kensington"]);
+  const feeCities = new Set(["Alameda", "Concord", "El Cerrito", "Kensington", "Richmond", "San Leandro", "San Ramon"]);
   const batchGoal = 20;
   const quantities = { small: 0, large: 0, xl: 0 };
 

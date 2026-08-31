@@ -7,7 +7,7 @@ const products = {
 } as const;
 
 const freeCities = new Set(["Alamo", "Albany", "Berkeley", "Danville", "Emeryville", "Lafayette", "Moraga", "Oakland", "Orinda", "Piedmont", "Pleasant Hill", "Walnut Creek"]);
-const feeCities = new Set(["Concord", "El Cerrito", "Kensington"]);
+const feeCities = new Set(["Alameda", "Concord", "El Cerrito", "Kensington", "Richmond", "San Leandro", "San Ramon"]);
 const paymentMethods = new Set(["venmo_now", "pay_on_delivery"]);
 const deliveryMethods = new Set(["contactless", "in_person"]);
 const allowedOrigins = (Deno.env.get("ALLOWED_ORIGINS") || "https://igorgeyn.github.io")
