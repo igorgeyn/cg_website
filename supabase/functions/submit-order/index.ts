@@ -6,7 +6,7 @@ const products = {
   xl: { name: "XL tray", priceCents: 1500, units: 8 },
 } as const;
 
-const freeCities = new Set(["Albany", "Berkeley", "Emeryville", "Lafayette", "Moraga", "Oakland", "Orinda", "Piedmont", "Pleasant Hill", "Walnut Creek"]);
+const freeCities = new Set(["Alamo", "Albany", "Berkeley", "Danville", "Emeryville", "Lafayette", "Moraga", "Oakland", "Orinda", "Piedmont", "Pleasant Hill", "Walnut Creek"]);
 const feeCities = new Set(["Concord", "El Cerrito", "Kensington"]);
 const paymentMethods = new Set(["venmo_now", "pay_on_delivery"]);
 const deliveryMethods = new Set(["contactless", "in_person"]);
