@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; form-action https://jatnbktzxciygliyweid.supabase.co/functions/v1/instinct-orders; base-uri 'none'">
+  <title>Test order lookup — Nori's Nibbles</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #193d30; background: #f5f7f1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 48px 20px; }
+    main { max-width: 480px; margin: auto; padding: 28px; background: white; border: 1px solid #d4ded1; border-radius: 12px; }
+    .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    h1 { font-size: 1.7rem; margin: 12px 0; }
+    p { line-height: 1.55; }
+    label { display: block; margin-top: 22px; font-weight: 650; }
+    input { display: block; width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #7c9588; border-radius: 6px; font: inherit; }
+    input:focus-visible, button:focus-visible { outline: 3px solid #99c9ad; outline-offset: 3px; }
+    button { width: 100%; padding: 13px; margin-top: 24px; border: 0; border-radius: 6px; background: #205a3f; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+    small { display: block; margin-top: 7px; color: #4d6357; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Nori's Nibbles · Test environment</p>
+    <h1>Look up a test order</h1>
+    <p>This form looks up a dummy order. It cannot cancel orders or send customer messages.</p>
+    <form method="post" action="https://jatnbktzxciygliyweid.supabase.co/functions/v1/instinct-orders" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="action" value="lookup">
+      <label for="instinct-key">Staging key</label>
+      <input id="instinct-key" name="instinct_key" type="password" autocomplete="current-password" maxlength="512" required>
+      <small>Fill INSTINCT_ORDERS_KEY from your secure vault.</small>
+      <label for="order-number">Order number</label>
+      <input id="order-number" name="order_number" type="text" value="NN-261005-T01" pattern="NN-[0-9]{6}-[A-Za-z0-9]{3}" maxlength="13" spellcheck="false" required>
+      <button type="submit">Look up test order</button>
+    </form>
+  </main>
+</body>
+</html>
