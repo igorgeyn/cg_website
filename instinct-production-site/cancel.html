@@ -30,7 +30,7 @@
     <h1>Cancel an order</h1>
     <p><strong>This form changes a real customer order.</strong> Use the exact order that Igor has confirmed.</p>
     <p><a href="index.html">Look up the order first</a> and review its current status, payment and delivery details. Ask Igor to confirm that specific cancellation in WhatsApp before submitting this form.</p>
-    <p>Cancellation clears the delivery schedule and removes the order from batch demand. The payment record and total stay unchanged. This action sends no customer message and issues no refund.</p>
+    <p>Cancellation clears the delivery schedule and removes the order from batch demand. The payment record and total stay unchanged. A short cancellation notice is emailed to the customer. Replies go to Igor. This action issues no refund.</p>
     <form method="post" action="https://csdsctyejlplcspvviys.supabase.co/functions/v1/instinct-orders" enctype="application/x-www-form-urlencoded">
       <input type="hidden" name="action" value="cancel">
       <label for="instinct-key">Production key</label>
@@ -50,7 +50,7 @@
       <input id="reason" name="reason" type="text" maxlength="500" autocomplete="off" required>
       <label class="confirmation" for="owner-confirmed">
         <input id="owner-confirmed" name="owner_confirmed" type="checkbox" value="yes" required>
-        <span>Igor explicitly confirmed cancelling the exact order entered above after reviewing its current details and the effects above.</span>
+        <span>Igor explicitly confirmed cancelling the exact order entered above after reviewing its current details and the effects above, including the cancellation notice.</span>
       </label>
       <button type="submit">Cancel confirmed order</button>
     </form>
