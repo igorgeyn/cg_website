@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; form-action https://csdsctyejlplcspvviys.supabase.co/functions/v1/instinct-orders; base-uri 'none'">
+  <title>Order cancellation — Nori's Nibbles</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #193d30; background: #f5f7f1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 48px 20px; }
+    main { max-width: 480px; margin: auto; padding: 28px; background: white; border: 1px solid #d4ded1; border-radius: 12px; }
+    .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    h1 { font-size: 1.7rem; margin: 12px 0; }
+    p { line-height: 1.55; }
+    label { display: block; margin-top: 22px; font-weight: 650; }
+    input { display: block; width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #7c9588; border-radius: 6px; font: inherit; }
+    input:focus-visible, button:focus-visible { outline: 3px solid #99c9ad; outline-offset: 3px; }
+    button { width: 100%; padding: 13px; margin-top: 24px; border: 0; border-radius: 6px; background: #205a3f; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+    .confirmation { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; line-height: 1.5; }
+    .confirmation input { width: auto; margin-top: 5px; flex-shrink: 0; }
+    small { display: block; margin-top: 7px; color: #4d6357; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Nori's Nibbles &middot; Live orders</p>
+    <h1>Cancel an order</h1>
+    <p><strong>This form changes a real customer order.</strong> Use the exact order that Igor has confirmed.</p>
+    <p><a href="index.html">Look up the order first</a> and review its current status, payment and delivery details. Ask Igor to confirm that specific cancellation in WhatsApp before submitting this form.</p>
+    <p>Cancellation clears the delivery schedule and removes the order from batch demand. The payment record and total stay unchanged. This action sends no customer message and issues no refund.</p>
+    <form method="post" action="https://csdsctyejlplcspvviys.supabase.co/functions/v1/instinct-orders" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="action" value="cancel">
+      <label for="instinct-key">Production key</label>
+      <input id="instinct-key" name="instinct_key" type="password" autocomplete="current-password" maxlength="512" required>
+      <small>Fill INSTINCT_ORDERS_PRODUCTION_KEY from your secure vault.</small>
+      <label for="order-number">Order number</label>
+      <input id="order-number" name="order_number" type="text" pattern="NN-[0-9]{6}-[A-Za-z0-9]{3}" maxlength="13" required>
+      <label for="customer-email">Customer email from lookup</label>
+      <input id="customer-email" name="customer_email" type="email" autocomplete="off" maxlength="254" required>
+      <label for="expected-updated-at">Original updated_at from lookup</label>
+      <input id="expected-updated-at" name="expected_updated_at" type="text" autocomplete="off" spellcheck="false" required>
+      <small>Copy expected_updated_at exactly from browser_cancellation_preview, including fractional seconds. A changed order will be rejected.</small>
+      <label for="request-id">Cancellation request ID from lookup</label>
+      <input id="request-id" name="request_id" type="text" autocomplete="off" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" required>
+      <small>Use request_id from browser_cancellation_preview. Keep the same ID and form values when retrying the same confirmed submission.</small>
+      <label for="reason">Reason for the confirmed cancellation</label>
+      <input id="reason" name="reason" type="text" maxlength="500" autocomplete="off" required>
+      <label class="confirmation" for="owner-confirmed">
+        <input id="owner-confirmed" name="owner_confirmed" type="checkbox" value="yes" required>
+        <span>Igor explicitly confirmed cancelling the exact order entered above after reviewing its current details and the effects above.</span>
+      </label>
+      <button type="submit">Cancel confirmed order</button>
+    </form>
+  </main>
+</body>
+</html>
